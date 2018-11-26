@@ -28,7 +28,7 @@ function turnSlider(direction) {
 		let currentSlide = +(slide.classList + '').split('-')[1];
 		let slideToBe;
 		switch(direction) {
-			case 'left': {
+			case 'right': {
 				slideToBe = currentSlide - 1;
 				if(slideToBe < 1) {
 					slideToBe = slides.length;
@@ -36,7 +36,7 @@ function turnSlider(direction) {
 				}
 				break;
 			}
-			case 'right': {
+			case 'left': {
 				slideToBe = currentSlide + 1;
 				if(slideToBe > slides.length) {
 					slideToBe = 1;

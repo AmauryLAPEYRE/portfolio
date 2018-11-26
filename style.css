@@ -27,10 +27,12 @@ a {
   letter-spacing: 1px;
   width: 100vw;
   justify-content: center;
+  align-items: center;
 }
 .flex_presentation2 {
+  width: 75%;
   display: flex;
-  width: 60%;
+  flex-direction: column;
 }
 .menu1 {
   display: flex;
@@ -54,7 +56,7 @@ justify-content: center;
 }
 .presentation2, .passions2 {
   width: 70%;
-  text-align: justify;
+  text-align: initial;
 }
 .skillbar-flex {
   width: 100%;
@@ -161,6 +163,7 @@ i:nth-child(3).active {
   border-radius: 40px;
   color: #AFA9A9;
   width: 35%;
+  height: 29px;
 }
 
 .down_1:hover {
@@ -181,7 +184,7 @@ i:nth-child(3).active {
 }
 
 main {
-  height: 375vh;
+  height: 280vh;
 }
 .container {
   display: flex;
@@ -220,7 +223,7 @@ h3 {
   font-family: 'Lato', sans-serif;
 }
 .height {
-  height: 100vh;
+  height: 70vh;
 }
 .body {
   height: 33vh;
@@ -343,6 +346,7 @@ h3 {
     transform-style: preserve-3d;
 	overflow-x: hidden;
 	overflow-y: visible;
+  margin-top: 30px;
 }
 
 .slide {
@@ -552,6 +556,12 @@ img.circle {
   }
 }
 @media (max-width: 550px) {
+  .down a {
+    padding-top: 15px;
+  }
+  .flex_img {
+    padding-top: 20px;
+  }
   .flex_images2 {
     width: 50%;
     display: flex;
@@ -564,6 +574,9 @@ img.circle {
   }
   .flex_presentation {
     flex-direction: column;
+  }
+  .flex_presentation2 {
+    width: 100vw;
   }
   .flex_title {
     padding-top: 20px;
@@ -613,7 +626,7 @@ img.circle {
     margin-right: 38vw;
   }
   main {
-    height: 455vh;
+    height: 560vh;
   }
   .image-width {
     width: auto;
@@ -623,5 +636,48 @@ img.circle {
   }
   .height {
     height: auto;
+  }
+  .slide.slide-1 {
+  	transform-origin: right;
+  	transform: scale(0.95) rotateY(-20deg);
+  	left: 1.5% !important;
+  	z-index: 1;
+  	opacity: 0.2;
+    width: 35%;
+  }
+
+  .slide.slide-2 {
+  	transform-origin: right;
+  	transform: rotateY(-10deg);
+  	left: 20% !important;
+  	z-index: 2;
+  	opacity: 0.2;
+    width: 35%;
+  }
+
+  .slide.slide-3 {
+  	left: 40% !important;
+  	z-index: 3;
+  	opacity: 1;
+    width: 35%;
+  }
+
+  .slide.slide-4 {
+  	transform-origin: left;
+  	transform: rotateY(10deg);
+  	left: 60% !important;
+  	z-index: 2;
+  	opacity: 0.2;
+    width: 35%;
+  }
+
+  .slide.slide-5 {
+  	transform-origin: left;
+  	transform: scale(0.95) rotateY(20deg);
+  	margin-left: 0;
+  	left: 78.5% !important;
+  	z-index: 1;
+  	opacity: 0.2;
+    width: 35%;
   }
 }

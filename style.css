@@ -18,7 +18,7 @@ a {
   filter: blur(1.5px);
   animation: js_img 7s linear 0.5s infinite alternate ;
   z-index: -1;
-  position: absolute;
+  position: fixed;
 }
 .flex_presentation {
   display: flex;

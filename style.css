@@ -448,7 +448,7 @@ img.circle {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: center!important;
 }
 
 
@@ -622,6 +622,10 @@ img.circle {
     font-family: 'Bad Script', cursive;
     flex-direction: column;
     text-align: center;
+  }
+  .background {
+    background-position: center;
+    background-attachment: inherit;
   }
   .passions {
     padding-top: 25px;

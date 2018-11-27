@@ -32,14 +32,13 @@ a {
 .flex_presentation2 {
   width: 75%;
   display: flex;
-  flex-direction: column;
 }
 .menu1 {
   display: flex;
   justify-content: space-between;
   padding: 30px;
   font-family: 'Lato', sans-serif;
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 95vw;
 }
@@ -360,7 +359,7 @@ h3 {
 	top: 0;
 	left: 0;
 	width: calc(20% - 20px);
-	z-index: 1000;
+	z-index: 10;
 	transition: all 0.3s ease-in-out;
 	opacity: 0;
   font-family: 'Tajawal';
@@ -577,6 +576,8 @@ img.circle {
   }
   .flex_presentation2 {
     width: 100vw;
+    display: flex;
+    flex-direction: column;
   }
   .flex_title {
     padding-top: 20px;
@@ -584,12 +585,13 @@ img.circle {
   .menu1 {
     display: flex;
     font-family: 'Lato', sans-serif;
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 95vw;
     justify-content: center;
     flex-direction: column-reverse;
     align-items: center;
+    z-index: 20;
   }
   .about_me {
     display: flex;
@@ -642,7 +644,7 @@ img.circle {
   	transform: scale(0.95) rotateY(-20deg);
   	left: 1.5% !important;
   	z-index: 1;
-  	opacity: 0.2;
+  	opacity: 0.1;
     width: 35%;
   }
 
@@ -651,7 +653,7 @@ img.circle {
   	transform: rotateY(-10deg);
   	left: 20% !important;
   	z-index: 2;
-  	opacity: 0.2;
+  	opacity: 0.6;
     width: 35%;
   }
 
@@ -667,7 +669,7 @@ img.circle {
   	transform: rotateY(10deg);
   	left: 60% !important;
   	z-index: 2;
-  	opacity: 0.2;
+  	opacity: 0.6;
     width: 35%;
   }
 
@@ -677,7 +679,7 @@ img.circle {
   	margin-left: 0;
   	left: 78.5% !important;
   	z-index: 1;
-  	opacity: 0.2;
+  	opacity: 0.1;
     width: 35%;
   }
   .background {

@@ -51,25 +51,32 @@ function turnSlider(direction) {
 }
 
 // SKILLBAR
-jQuery(document).ready(function() {
-  // jQuery(document).on('scroll', function(){
-  jQuery(document).each(function(){
-    if(jQuery('html,body').scrollTop() > jQuery('#first-sec').height()){
-      jQuery(".skillbar").each(function() {
-        jQuery(this).find(".skillbar-bar").animate({
-          width: jQuery(this).attr("data-percent")
-        },2000);
-
-        jQuery(this).find(".skillbar-bar").animate({
-          left: jQuery(this).attr("data-percent")
-        },{
-          duration: 3000,
-          step: function(now, fx) {
-            var data = Math.round(now);
-            jQuery(this).find(".skillbar-bar").html(data + "%");
-          }
-        });
-      });
-    }
-  });
+jQuery('.skillbar').each(function(){
+	jQuery(this).find('.skillbar-bar').animate({
+		width:jQuery(this).attr('data-percent')
+	},2000);
 });
+
+
+
+// jQuery(document).ready(function() {
+//   jQuery(document).on('scroll', function(){
+//     if(jQuery('html,body').scrollTop() > jQuery('#first-sec').height()){
+//       jQuery(".skillbar").each(function() {
+//         jQuery(this).find(".skillbar-bar").animate({
+//           width: jQuery(this).attr("data-percent")
+//         },2000);
+//
+//         jQuery(this).find(".skillbar-bar").animate({
+//           left: jQuery(this).attr("data-percent")
+//         },{
+//           duration: 3000,
+//           step: function(now, fx) {
+//             var data = Math.round(now);
+//             jQuery(this).find(".skillbar-bar").html(data + "%");
+//           }
+//         });
+//       });
+//     }
+//   });
+// });

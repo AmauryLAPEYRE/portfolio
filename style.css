@@ -18,7 +18,7 @@ a {
   filter: blur(1.5px);
   animation: js_img 7s linear 0.5s infinite alternate ;
   z-index: -1;
-  position: fixed;
+  position: absolute;
 }
 .flex_presentation {
   display: flex;
@@ -626,7 +626,7 @@ img.circle {
     margin-right: 38vw;
   }
   main {
-    height: 450vh;
+    height: 500vh;
   }
   .image-width {
     width: auto;

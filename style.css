@@ -631,6 +631,7 @@ img.circle {
   }
   main {
     height: 500vh;
+    -webkit-overflow-scrolling: touch;
   }
   .image-width {
     width: auto;

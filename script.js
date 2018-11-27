@@ -52,7 +52,7 @@ function turnSlider(direction) {
 
 // SKILLBAR
 jQuery(document).ready(function() {
-  jQuery(document).on('scroll touchestarts', function(){
+  jQuery(document).on('scroll touchstart', function(){
     if(jQuery('html,body').scrollTop() > jQuery('#first-sec').height()){
       jQuery(".skillbar").each(function() {
         jQuery(this).find(".skillbar-bar").animate({

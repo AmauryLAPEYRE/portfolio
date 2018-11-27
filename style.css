@@ -40,6 +40,7 @@ a {
   position: absolute;
   top: 0;
   width: 95vw;
+  padding: 25px;
 }
 .text_center{
   text-align: center;
@@ -182,7 +183,7 @@ i:nth-child(3).active {
 }
 
 main {
-  height: 280vh;
+  height: 290vh;
 }
 .container {
   display: flex;
@@ -442,6 +443,14 @@ img.circle {
 	height: 50px;
 	margin: 30px 20px 0;
 }
+.background {
+  background-image: url('images/vintage-rocket.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 
 @-webkit-keyframes animate {
   0% {
@@ -594,6 +603,7 @@ img.circle {
     flex-direction: column-reverse;
     align-items: center;
     z-index: 20;
+    padding: inherit;
   }
   .about_me {
     display: flex;

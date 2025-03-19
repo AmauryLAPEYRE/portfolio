@@ -1,0 +1,207 @@
+/* animations.css - Animations harmonisées avec la nouvelle palette */
+
+/* Animation de pulsation pour badges et éléments d'accent */
+@keyframes pulse-accent {
+  0% {
+    box-shadow: 0 0 0 0 rgba(49, 130, 206, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(49, 130, 206, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(49, 130, 206, 0);
+  }
+}
+
+.pulse-accent {
+  animation: pulse-accent 2s infinite;
+}
+
+/* Animation d'entrée lors du chargement des pages */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Animation pour les cartes */
+@keyframes cardHover {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  animation: cardHover 0.3s ease forwards;
+}
+
+/* Animation de pulsation pour éléments principaux */
+@keyframes pulse-primary {
+  0% {
+    box-shadow: 0 0 0 0 rgba(253, 157, 62, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(253, 157, 62, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(253, 157, 62, 0);
+  }
+}
+
+.pulse-primary {
+  animation: pulse-primary 2s infinite;
+}
+
+/* Animation de défilement pour la timeline */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-left {
+  animation: slideInFromLeft 0.5s ease-out forwards;
+}
+
+/* Animation pour l'apparition progressive des éléments */
+@keyframes fadeInStaggered {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-fade-in > * {
+  opacity: 0;
+}
+
+.stagger-fade-in > *:nth-child(1) {
+  animation: fadeInStaggered 0.5s ease-out 0.1s forwards;
+}
+
+.stagger-fade-in > *:nth-child(2) {
+  animation: fadeInStaggered 0.5s ease-out 0.2s forwards;
+}
+
+.stagger-fade-in > *:nth-child(3) {
+  animation: fadeInStaggered 0.5s ease-out 0.3s forwards;
+}
+
+.stagger-fade-in > *:nth-child(4) {
+  animation: fadeInStaggered 0.5s ease-out 0.4s forwards;
+}
+
+.stagger-fade-in > *:nth-child(5) {
+  animation: fadeInStaggered 0.5s ease-out 0.5s forwards;
+}
+
+.stagger-fade-in > *:nth-child(n+6) {
+  animation: fadeInStaggered 0.5s ease-out 0.6s forwards;
+}
+
+/* Animation de rotation subtile */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate {
+  animation: rotate 20s linear infinite;
+}
+
+/* Animation de secousse pour attirer l'attention */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+.shake {
+  animation: shake 0.8s ease-in-out;
+}
+
+/* Animation de rebond subtil */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-10px);}
+  60% {transform: translateY(-5px);}
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+/* Animation d'écriture */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+.typing {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(40, end) forwards;
+}
+
+/* Animation de clignotement du curseur */
+@keyframes blink {
+  from { border-color: transparent }
+  to { border-color: #fd9d3e }
+}
+
+.cursor {
+  border-right: 2px solid;
+  animation: blink 0.7s infinite;
+  border-color: #fd9d3e;
+}
+
+/* Animation pour les badges IA */
+@keyframes pulse-badge {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.pulse-badge {
+  animation: pulse-badge 1.5s infinite;
+}

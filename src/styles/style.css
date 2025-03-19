@@ -1,0 +1,106 @@
+/* Palette de couleurs harmonisée et animations */
+
+:root {
+  /* Couleurs principales */
+  --primary: #fd9d3e;        /* Orange - couleur signature */
+  --primary-light: #FDBA74;  /* Orange clair */
+  --primary-dark: #EA580C;   /* Orange foncé */
+  
+  /* Couleur secondaire */
+  --secondary: #2C3E50;      /* Bleu marine */
+  --secondary-light: #3D5A80;
+  --secondary-dark: #1A2A36;
+  
+  /* Couleur d'accent pour badges IA */
+  --accent: #3182CE;         /* Bleu électrique pour les badges IA */
+  --accent-light: #4299E1;
+  --accent-glow: rgba(49, 130, 206, 0.4); /* Pour l'animation de pulsation */
+  
+  /* Tons neutres */
+  --neutral-100: #F7FAFC;    /* Gris très clair */
+  --neutral-200: #EDF2F7;
+  --neutral-300: #E2E8F0;
+  --neutral-400: #CBD5E0;
+  --neutral-500: #A0AEC0;
+  --neutral-600: #718096;
+  --neutral-700: #4A5568;
+  --neutral-800: #2D3748;
+  --neutral-900: #1A202C;    /* Gris très foncé */
+}
+
+/* Animation de pulsation pour badges IA */
+@keyframes pulse-accent {
+  0% {
+    box-shadow: 0 0 0 0 var(--accent-glow);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(49, 130, 206, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(49, 130, 206, 0);
+  }
+}
+
+/* Style pour les badges IA */
+.badge-ia {
+  background-color: var(--accent);
+  color: white;
+  border-radius: 9999px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  animation: pulse-accent 2s infinite;
+  box-shadow: 0 0 0 0 var(--accent-glow);
+}
+
+/* Style cohérent pour les cartes */
+.card {
+  border-left: 4px solid var(--primary);
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.07), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card-secondary {
+  border-left-color: var(--secondary);
+}
+
+/* Styles pour les sections de contenu */
+.section-header {
+  color: var(--secondary);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Style pour les badges de compétence */
+.skill-tag {
+  background-color: var(--primary-light);
+  color: var(--secondary-dark);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+/* Style pour les indicateurs numériques */
+.number-badge {
+  background-color: var(--primary);
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}

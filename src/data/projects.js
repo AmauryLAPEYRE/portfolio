@@ -39,53 +39,25 @@ export const projects = [
       aiAssisted: true,
       aiContribution: "Ce projet personnel a été développé avec l'assistance de plusieurs modèles d'IA. L'architecture de l'application, les composants React et les visualisations de données ont été générés avec l'aide de l'IA, me permettant de créer une application de gestion financière sophistiquée sans expertise préalable en React."
     }
-  }
-  
-  /* 
-  Structure pour ajouter de nouveaux projets :
-  
-  PROJET PROFESSIONNEL:
+  },
   {
-    id: X,
-    title: "Nom du projet",
-    description: "Brève description",
-    type: "professional", // Important: indiquer qu'il s'agit d'un projet professionnel
-    categories: ['category1', 'category2'],
-    technologies: ["Tech1", "Tech2"],
+    id: 3,
+    title: "Calendrier de Congés",
+    description: "Application de gestion et visualisation des congés et RTT pour une équipe informatique",
+    type: "professional", // Projet développé dans un cadre professionnel
+    categories: ['web', 'dev', 'support'],
+    technologies: ["React", "Tailwind CSS", "Vercel"],
     image: "/api/placeholder/380/220",
-    metrics: "Métrique principale",
-    link: "https://lien.com",
-    github: "https://github.com/lien",
-    chartData: [valeur1, valeur2, valeur3, valeur4],
-    color: "bg-color-500",
+    metrics: "Optimisation des processus d'équipe",
+    link: "https://calendrier-sigma.vercel.app/",
+    github: "https://github.com/AmauryLAPEYRE/calendrier",
+    chartData: [90, 85, 80, 95],
+    color: "bg-blue-500",
     details: {
-      problem: "Problématique client",
-      solution: "Solution apportée pour le client",
-      aiAssisted: true/false,
-      aiContribution: "Description montrant comment l'IA a aidé à développer cette solution"
+      problem: "L'équipe informatique (développeurs, infrastructure, support) gérait les congés payés et RTT dans un fichier Excel partagé, peu intuitif, peu ergonomique et difficilement lisible",
+      solution: "Application web interactive pour visualiser et gérer les congés de l'équipe de façon intuitive et claire, avec un design moderne et des codes couleur pour améliorer la lisibilité",
+      aiAssisted: true,
+      aiContribution: "Cette application a été développée dans le cadre de mon travail avec l'assistance de l'IA. J'ai pu rapidement créer une interface React intuitive et un système de gestion des congés plus efficace que la solution Excel précédente, en optimisant la visualisation des données et l'expérience utilisateur pour l'ensemble de l'équipe informatique."
     }
   }
-  
-  PROJET PERSONNEL:
-  {
-    id: Y,
-    title: "Nom du projet",
-    description: "Brève description",
-    type: "personal", // Important: indiquer qu'il s'agit d'un projet personnel
-    categories: ['category1', 'category2'],
-    technologies: ["Tech1", "Tech2"],
-    image: "/api/placeholder/380/220",
-    metrics: "Métrique principale",
-    link: "https://lien.com",
-    github: "https://github.com/lien",
-    chartData: [valeur1, valeur2, valeur3, valeur4],
-    color: "bg-color-500",
-    details: {
-      problem: "Problématique personnelle",
-      solution: "Solution personnelle",
-      aiAssisted: true/false,
-      aiContribution: "Description montrant comment l'IA a aidé sur ce projet personnel"
-    }
-  }
-  */
 ];

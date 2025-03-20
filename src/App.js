@@ -1,16 +1,17 @@
 // src/App.js
-import React, { Suspense, lazy, useEffect, useState } from 'react';
+import React, { Suspense, lazy, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ContentProvider } from './context/ContentContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { LoadingSpinner } from './components/common/UIComponents';
 
 // Page d'accueil chargée immédiatement (sans lazy loading)
 import Home from './pages/Home';
 
 // Chargement paresseux des autres pages
 const Projects = lazy(() => import('./pages/Projects'));
-const ProjectDetail = lazy(() => import('./pages/ProjectDetail')); // Page de détail
+const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
 const Experience = lazy(() => import('./pages/Experience'));
 const Skills = lazy(() => import('./pages/Skills'));
 const Education = lazy(() => import('./pages/Education'));
@@ -19,20 +20,9 @@ const AIProjects = lazy(() => import('./pages/AIProjects'));
 const Login = lazy(() => import('./admin/Login'));
 const AdminPanel = lazy(() => import('./admin/AdminPanel'));
 
-// Composant de chargement
-const LoadingFallback = () => (
-  <div className="flex justify-center items-center min-h-screen">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
-  </div>
-);
-
 // Composant pour les routes protégées
 const ProtectedRoute = ({ children }) => {
-  const { currentUser, loading } = useAuth();
-  
-  if (loading) {
-    return <LoadingFallback />;
-  }
+  const { currentUser } = useAuth();
   
   if (!currentUser) {
     return <Navigate to="/login" />;
@@ -46,27 +36,9 @@ const App = () => {
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    // Préchargement des modules en arrière-plan
-    const preloadModules = async () => {
-      // Précharger les modules les plus susceptibles d'être visités
-      const preloadPromises = [
-        import('./pages/Projects'),
-        import('./pages/Experience')
-      ];
-      
-      try {
-        await Promise.all(preloadPromises);
-        console.log('Modules préchargés avec succès');
-      } catch (error) {
-        console.error('Erreur lors du préchargement des modules:', error);
-      }
-    };
-    
-    // Simuler un temps de chargement pour permettre aux services de s'initialiser
+    // Simuler un temps de chargement pour améliorer l'expérience utilisateur
     const initTimer = setTimeout(() => {
       setIsInitialized(true);
-      // Précharger les modules après l'initialisation
-      preloadModules();
     }, 1000);
 
     return () => clearTimeout(initTimer);
@@ -86,7 +58,7 @@ const App = () => {
       <ThemeProvider>
         <AuthProvider>
           <ContentProvider>
-            <Suspense fallback={<LoadingFallback />}>
+            <Suspense fallback={<LoadingSpinner />}>
               <Routes>
                 {/* Routes publiques */}
                 <Route path="/" element={<Home />} />

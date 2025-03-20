@@ -44,94 +44,88 @@ export const ContentProvider = ({ children }) => {
     }
   };
 
-  // Charger le profil
+  // Fonctions de chargement pour chaque type de données
   const loadProfile = async () => {
-    const data = await storageService.getConfig('profile');
+    const data = storageService.getConfig('profile');
     if (data) {
       setProfile(data);
     } else {
       setProfile(defaultData.profile);
       // Sauvegarder les données par défaut
-      await storageService.saveConfig('profile', defaultData.profile);
+      storageService.saveConfig('profile', defaultData.profile);
     }
   };
 
-  // Charger les projets
   const loadProjects = async () => {
-    const data = await storageService.getCollection('projects');
+    const data = storageService.getCollection('projects');
     if (data && data.length > 0) {
       setProjects(data);
     } else {
       setProjects(defaultData.projects);
       // Sauvegarder les données par défaut
-      await storageService.saveCollection('projects', defaultData.projects);
+      storageService.saveCollection('projects', defaultData.projects);
     }
   };
 
-  // Charger les expériences
   const loadExperiences = async () => {
-    const data = await storageService.getCollection('experiences');
+    const data = storageService.getCollection('experiences');
     if (data && data.length > 0) {
       setExperiences(data);
     } else {
       setExperiences(defaultData.experiences);
       // Sauvegarder les données par défaut
-      await storageService.saveCollection('experiences', defaultData.experiences);
+      storageService.saveCollection('experiences', defaultData.experiences);
     }
   };
 
-  // Charger les compétences
   const loadSkills = async () => {
-    const data = await storageService.getCollection('skills');
+    const data = storageService.getCollection('skills');
     if (data && data.length > 0) {
       setSkills(data);
     } else {
       setSkills(defaultData.skills);
       // Sauvegarder les données par défaut
-      await storageService.saveCollection('skills', defaultData.skills);
+      storageService.saveCollection('skills', defaultData.skills);
     }
   };
 
-  // Charger la formation
   const loadEducation = async () => {
-    const data = await storageService.getCollection('education');
+    const data = storageService.getCollection('education');
     if (data && data.length > 0) {
       setEducation(data);
     } else {
       setEducation(defaultData.education);
       // Sauvegarder les données par défaut
-      await storageService.saveCollection('education', defaultData.education);
+      storageService.saveCollection('education', defaultData.education);
     }
   };
 
-  // Charger les centres d'intérêt
   const loadInterests = async () => {
-    const data = await storageService.getCollection('interests');
+    const data = storageService.getCollection('interests');
     if (data && data.length > 0) {
       setInterests(data);
     } else {
       setInterests(defaultData.interests);
       // Sauvegarder les données par défaut
-      await storageService.saveCollection('interests', defaultData.interests);
+      storageService.saveCollection('interests', defaultData.interests);
     }
   };
 
-  // Charger la section IA
   const loadAiSection = async () => {
-    const data = await storageService.getConfig('aiSection');
+    const data = storageService.getConfig('aiSection');
     if (data) {
       setAiSection(data);
     } else {
       setAiSection(defaultData.aiSection);
       // Sauvegarder les données par défaut
-      await storageService.saveConfig('aiSection', defaultData.aiSection);
+      storageService.saveConfig('aiSection', defaultData.aiSection);
     }
   };
 
-  // Mettre à jour le profil
+  // Fonctions de mise à jour pour chaque type de données
   const updateProfile = async (newData) => {
     try {
-      await storageService.saveConfig('profile', newData);
+      storageService.saveConfig('profile', newData);
       setProfile(newData);
       return true;
     } catch (err) {
@@ -140,10 +134,9 @@ export const ContentProvider = ({ children }) => {
     }
   };
 
-  // Mettre à jour les projets
   const updateProjects = async (newData) => {
     try {
-      await storageService.saveCollection('projects', newData);
+      storageService.saveCollection('projects', newData);
       setProjects(newData);
       return true;
     } catch (err) {
@@ -152,7 +145,6 @@ export const ContentProvider = ({ children }) => {
     }
   };
 
-  // Ajouter un projet
   const addProject = async (project) => {
     try {
       // Générer un ID unique si non spécifié
@@ -162,7 +154,7 @@ export const ContentProvider = ({ children }) => {
       };
       
       const updatedProjects = [...projects, newProject];
-      await storageService.saveCollection('projects', updatedProjects);
+      storageService.saveCollection('projects', updatedProjects);
       setProjects(updatedProjects);
       return newProject;
     } catch (err) {
@@ -171,14 +163,13 @@ export const ContentProvider = ({ children }) => {
     }
   };
 
-  // Mettre à jour un projet spécifique
   const updateProject = async (id, updatedData) => {
     try {
       const updatedProjects = projects.map(project => 
         project.id.toString() === id.toString() ? { ...project, ...updatedData } : project
       );
       
-      await storageService.saveCollection('projects', updatedProjects);
+      storageService.saveCollection('projects', updatedProjects);
       setProjects(updatedProjects);
       return true;
     } catch (err) {
@@ -187,11 +178,10 @@ export const ContentProvider = ({ children }) => {
     }
   };
 
-  // Supprimer un projet
   const deleteProject = async (id) => {
     try {
       const updatedProjects = projects.filter(project => project.id.toString() !== id.toString());
-      await storageService.saveCollection('projects', updatedProjects);
+      storageService.saveCollection('projects', updatedProjects);
       setProjects(updatedProjects);
       return true;
     } catch (err) {
@@ -200,10 +190,9 @@ export const ContentProvider = ({ children }) => {
     }
   };
 
-  // Mettre à jour les expériences
   const updateExperiences = async (newData) => {
     try {
-      await storageService.saveCollection('experiences', newData);
+      storageService.saveCollection('experiences', newData);
       setExperiences(newData);
       return true;
     } catch (err) {
@@ -212,10 +201,9 @@ export const ContentProvider = ({ children }) => {
     }
   };
 
-  // Mettre à jour les compétences
   const updateSkills = async (newData) => {
     try {
-      await storageService.saveCollection('skills', newData);
+      storageService.saveCollection('skills', newData);
       setSkills(newData);
       return true;
     } catch (err) {
@@ -224,10 +212,9 @@ export const ContentProvider = ({ children }) => {
     }
   };
 
-  // Mettre à jour la formation
   const updateEducation = async (newData) => {
     try {
-      await storageService.saveCollection('education', newData);
+      storageService.saveCollection('education', newData);
       setEducation(newData);
       return true;
     } catch (err) {
@@ -236,10 +223,9 @@ export const ContentProvider = ({ children }) => {
     }
   };
 
-  // Mettre à jour les centres d'intérêt
   const updateInterests = async (newData) => {
     try {
-      await storageService.saveCollection('interests', newData);
+      storageService.saveCollection('interests', newData);
       setInterests(newData);
       return true;
     } catch (err) {
@@ -248,10 +234,9 @@ export const ContentProvider = ({ children }) => {
     }
   };
 
-  // Mettre à jour la section IA
   const updateAiSection = async (newData) => {
     try {
-      await storageService.saveConfig('aiSection', newData);
+      storageService.saveConfig('aiSection', newData);
       setAiSection(newData);
       return true;
     } catch (err) {
@@ -264,13 +249,13 @@ export const ContentProvider = ({ children }) => {
   const resetToDefaults = async () => {
     try {
       // Réinitialiser chaque section avec les données par défaut
-      await storageService.saveConfig('profile', defaultData.profile);
-      await storageService.saveCollection('projects', defaultData.projects);
-      await storageService.saveCollection('experiences', defaultData.experiences);
-      await storageService.saveCollection('skills', defaultData.skills);
-      await storageService.saveCollection('education', defaultData.education);
-      await storageService.saveCollection('interests', defaultData.interests);
-      await storageService.saveConfig('aiSection', defaultData.aiSection);
+      storageService.saveConfig('profile', defaultData.profile);
+      storageService.saveCollection('projects', defaultData.projects);
+      storageService.saveCollection('experiences', defaultData.experiences);
+      storageService.saveCollection('skills', defaultData.skills);
+      storageService.saveCollection('education', defaultData.education);
+      storageService.saveCollection('interests', defaultData.interests);
+      storageService.saveConfig('aiSection', defaultData.aiSection);
       
       // Recharger les données
       setProfile(defaultData.profile);

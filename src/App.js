@@ -1,10 +1,8 @@
 // src/App.js
-import React, { Suspense, lazy, useState, useEffect } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './context/AuthContext';
 import { ContentProvider } from './context/ContentContext';
 import { ThemeProvider } from './context/ThemeContext';
-import { LoadingSpinner } from './components/common/UIComponents';
 
 // Page d'accueil chargée immédiatement (sans lazy loading)
 import Home from './pages/Home';
@@ -17,28 +15,40 @@ const Skills = lazy(() => import('./pages/Skills'));
 const Education = lazy(() => import('./pages/Education'));
 const Interests = lazy(() => import('./pages/Interests'));
 const AIProjects = lazy(() => import('./pages/AIProjects'));
-const Login = lazy(() => import('./admin/Login'));
-const AdminPanel = lazy(() => import('./admin/AdminPanel'));
 
-// Composant pour les routes protégées
-const ProtectedRoute = ({ children }) => {
-  const { currentUser } = useAuth();
-  
-  if (!currentUser) {
-    return <Navigate to="/login" />;
-  }
-  
-  return children;
-};
+// Composant de chargement
+const LoadingFallback = () => (
+  <div className="flex justify-center items-center min-h-screen">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
+  </div>
+);
 
 const App = () => {
   // État pour suivre l'initialisation de l'application
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    // Simuler un temps de chargement pour améliorer l'expérience utilisateur
+    // Préchargement des modules en arrière-plan
+    const preloadModules = async () => {
+      // Précharger les modules les plus susceptibles d'être visités
+      const preloadPromises = [
+        import('./pages/Projects'),
+        import('./pages/Experience')
+      ];
+      
+      try {
+        await Promise.all(preloadPromises);
+        console.log('Modules préchargés avec succès');
+      } catch (error) {
+        console.error('Erreur lors du préchargement des modules:', error);
+      }
+    };
+    
+    // Simuler un temps de chargement pour permettre aux services de s'initialiser
     const initTimer = setTimeout(() => {
       setIsInitialized(true);
+      // Précharger les modules après l'initialisation
+      preloadModules();
     }, 1000);
 
     return () => clearTimeout(initTimer);
@@ -56,37 +66,24 @@ const App = () => {
   return (
     <Router>
       <ThemeProvider>
-        <AuthProvider>
-          <ContentProvider>
-            <Suspense fallback={<LoadingSpinner />}>
-              <Routes>
-                {/* Routes publiques */}
-                <Route path="/" element={<Home />} />
-                <Route path="/projets" element={<Projects />} />
-                <Route path="/projets/:id" element={<ProjectDetail />} /> {/* Route pour détail de projet */}
-                <Route path="/experience" element={<Experience />} />
-                <Route path="/competences" element={<Skills />} />
-                <Route path="/formation" element={<Education />} />
-                <Route path="/interets" element={<Interests />} />
-                <Route path="/projets-ia" element={<AIProjects />} />
-                
-                {/* Routes d'administration */}
-                <Route path="/login" element={<Login />} />
-                <Route 
-                  path="/admin/*" 
-                  element={
-                    <ProtectedRoute>
-                      <AdminPanel />
-                    </ProtectedRoute>
-                  } 
-                />
-                
-                {/* Redirection pour les routes inconnues */}
-                <Route path="*" element={<Navigate to="/" />} />
-              </Routes>
-            </Suspense>
-          </ContentProvider>
-        </AuthProvider>
+        <ContentProvider>
+          <Suspense fallback={<LoadingFallback />}>
+            <Routes>
+              {/* Routes publiques */}
+              <Route path="/" element={<Home />} />
+              <Route path="/projets" element={<Projects />} />
+              <Route path="/projets/:id" element={<ProjectDetail />} />
+              <Route path="/experience" element={<Experience />} />
+              <Route path="/competences" element={<Skills />} />
+              <Route path="/formation" element={<Education />} />
+              <Route path="/interets" element={<Interests />} />
+              <Route path="/projets-ia" element={<AIProjects />} />
+              
+              {/* Redirection pour les routes inconnues */}
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </Suspense>
+        </ContentProvider>
       </ThemeProvider>
     </Router>
   );

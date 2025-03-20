@@ -81,7 +81,7 @@ const Navigation = () => {
               <span 
                 className="transition-colors"
                 style={{ color: '#fd9d3e' }}
-              > {profile.name.split(' ')[1]}</span>
+              > Demo AI</span>
             </h1>
             <p className="text-xs text-neutral-200 -mt-1">{profile.title}</p>
           </div>
@@ -102,14 +102,6 @@ const Navigation = () => {
               {link.label}
             </Link>
           ))}
-          
-          {/* Bouton admin */}
-          <Link
-            to="/login"
-            className="ml-2 px-3 py-2 rounded-md text-sm font-medium bg-neutral-700/80 text-neutral-200 hover:text-white hover:bg-neutral-600 transition-colors"
-          >
-            <Settings size={18} />
-          </Link>
         </nav>
 
         {/* Bouton menu mobile */}
@@ -141,15 +133,6 @@ const Navigation = () => {
                   <span>{link.label}</span>
                 </Link>
               ))}
-              
-              {/* Lien admin mobile */}
-              <Link
-                to="/login"
-                className="flex items-center space-x-3 px-4 py-3 rounded-md text-sm font-medium text-neutral-200 hover:text-white hover:bg-neutral-600 transition-colors"
-              >
-                <Settings size={18} />
-                <span>Administration</span>
-              </Link>
             </nav>
             
             {/* Contact rapide mobile */}

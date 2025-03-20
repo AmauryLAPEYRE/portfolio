@@ -14,7 +14,8 @@ export const experiences = [
         "Administration de l'antivirus F-Secure",
         "Masterisation des postes avec Windows",
         "Configuration des équipements réseau (VLAN, switch)",
-        "Gestion du parc informatique (Chromebook, PC, Wyse)"
+        "Gestion du parc informatique (Chromebook, PC, Wyse)",
+        "Développement de mini-applications avec l'aide de l'IA pour optimiser certains processus clients"
       ],
       color: "bg-orange-400",
       aiAssisted: false

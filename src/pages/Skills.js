@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useContent } from '../context/ContentContext';
 import Navigation from '../components/Navigation';
+import { Cpu } from 'lucide-react';
 
 // Nouveau composant pour afficher une compétence
 const SkillItem = ({ name, level, color = '#fd9d3e', categoryColor = '#2C3E50', animated = true }) => {
@@ -112,6 +113,48 @@ const Skills = () => {
               Un aperçu de mes compétences techniques et personnelles, développées à travers mes expériences professionnelles et mes projets personnels.
             </p>
           </header>
+          
+          {/* Section spéciale IA Skills */}
+          <div className="bg-gradient-to-r from-primary-500 to-primary-600 rounded-xl shadow-lg mb-16 overflow-hidden">
+            <div className="p-8 text-white">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="bg-white p-3 rounded-full">
+                  <Cpu size={28} className="text-primary-600" />
+                </div>
+                <h2 className="text-2xl font-bold">Compétences de développement assisté par IA</h2>
+              </div>
+              
+              <p className="mb-8">
+                En tant que technicien support, j'ai développé un ensemble unique de compétences combinant mon expertise en support avec les capacités de l'IA pour créer des solutions techniques sans être développeur expert.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
+                  <h3 className="font-bold mb-2 text-white">Prompt Engineering</h3>
+                  <div className="w-full bg-white/20 h-2 rounded-full mb-1">
+                    <div className="bg-white h-2 rounded-full" style={{ width: '90%' }}></div>
+                  </div>
+                  <p className="text-sm">Formuler des requêtes précises pour l'IA</p>
+                </div>
+                
+                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
+                  <h3 className="font-bold mb-2 text-white">Intégration Code IA</h3>
+                  <div className="w-full bg-white/20 h-2 rounded-full mb-1">
+                    <div className="bg-white h-2 rounded-full" style={{ width: '85%' }}></div>
+                  </div>
+                  <p className="text-sm">Adapter et combiner le code généré par l'IA</p>
+                </div>
+                
+                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
+                  <h3 className="font-bold mb-2 text-white">Debugging avec IA</h3>
+                  <div className="w-full bg-white/20 h-2 rounded-full mb-1">
+                    <div className="bg-white h-2 rounded-full" style={{ width: '80%' }}></div>
+                  </div>
+                  <p className="text-sm">Résoudre les problèmes avec l'aide de l'IA</p>
+                </div>
+              </div>
+            </div>
+          </div>
           
           {/* Filtres de catégorie */}
           <div className="flex flex-wrap justify-center gap-2 mb-10">

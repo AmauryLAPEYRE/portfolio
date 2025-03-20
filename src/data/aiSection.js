@@ -1,51 +1,51 @@
 // src/data/aiSection.js
 export const aiSection = {
-    title: "Mes Projets assistés par IA",
-    description: "Je m'intéresse particulièrement à l'intégration de l'intelligence artificielle dans mes projets. Voici comment j'utilise les outils d'IA pour améliorer mon travail et créer des solutions innovantes, même sans être un expert en développement.",
+    title: "L'IA comme co-développeur",
+    description: "Ce portfolio démontre comment un technicien support peut utiliser l'intelligence artificielle pour créer des applications professionnelles sans expertise en développement. Cette approche ouvre de nouvelles perspectives pour DCS EASYWARE et ses clients.",
     benefits: [
-      "Accélération du développement grâce à la génération de code par IA",
-      "Amélioration de l'UI/UX avec des suggestions intelligentes",
-      "Optimisation des performances par analyse automatique du code",
-      "Création de contenus et documentation assistée",
-      "Résolution plus rapide des problèmes complexes"
+      "Création d'applications utiles sans besoin d'une expertise approfondie en développement",
+      "Résolution rapide de problèmes clients grâce à des outils sur mesure",
+      "Valorisation des compétences techniques des collaborateurs non-développeurs",
+      "Augmentation de la productivité et réduction des délais de livraison",
+      "Solutions adaptées exactement aux besoins spécifiques des clients"
     ],
     tools: [
       {
-        name: "Assistants IA de codage",
-        description: "Utilisation d'outils comme GitHub Copilot et Claude pour générer du code et accélérer le développement",
+        name: "Claude IA (Anthropic)",
+        description: "Modèle d'IA avancé utilisé pour générer du code, concevoir des solutions et expliquer des concepts techniques complexes",
         icon: "code"
       },
       {
-        name: "Générateurs d'UI",
-        description: "Création rapide d'interfaces utilisateur avec l'aide de l'IA",
-        icon: "layout"
-      },
-      {
-        name: "Outils d'analyse de code",
-        description: "Détection des problèmes potentiels et suggestions d'amélioration",
+        name: "ChatGPT Pro (OpenAI)",
+        description: "Assistant IA puissant pour développer rapidement des prototypes, déboguer et optimiser le code",
         icon: "search"
       },
       {
-        name: "Automatisation de tâches",
-        description: "Scripts et workflows automatisés avec assistance IA",
+        name: "API Anthropic & OpenAI",
+        description: "Intégration de l'IA directement dans les applications pour créer des fonctionnalités intelligentes",
         icon: "repeat"
+      },
+      {
+        name: "Agents IA spécialisés",
+        description: "Assistants techniques spécialisés pour différentes tâches (UI/UX, base de données, sécurité...)",
+        icon: "layout"
       }
     ],
     showcase: {
-      title: "Ce que l'IA permet de réaliser sans expertise approfondie",
-      description: "L'IA démocratise le développement en permettant à chacun de créer des solutions sophistiquées sans nécessiter des années d'expertise technique. Voici comment j'en tire parti:",
+      title: "Ce qu'un technicien support peut accomplir avec l'IA",
+      description: "Ces projets démontrent comment un technicien support peut, avec l'assistance de l'IA, développer des solutions qui étaient auparavant uniquement accessibles aux développeurs confirmés :",
       examples: [
-        "Création de sites web complets avec interactions complexes",
-        "Développement d'applications métier répondant à des besoins spécifiques",
-        "Optimisation de bases de données et requêtes SQL",
-        "Automatisation de tâches répétitives pour gagner du temps",
-        "Création d'interfaces utilisateur intuitives et attractives"
+        "Applications web fonctionnelles créées en quelques jours au lieu de semaines",
+        "Outils sur mesure répondant à des problématiques clients spécifiques",
+        "Automatisation de tâches répétitives qui libère du temps pour l'équipe",
+        "Interfaces intuitives qui améliorent l'expérience utilisateur",
+        "Solutions techniques adaptées sans dépendre d'une équipe de développement externe"
       ]
     },
     callToAction: {
-      title: "Intéressé par l'utilisation de l'IA dans vos projets?",
-      description: "Je serais ravi de discuter de la façon dont nous pourrions utiliser l'IA pour résoudre vos défis spécifiques et créer des solutions adaptées à vos besoins.",
-      buttonText: "Discutons de votre projet",
+      title: "Une nouvelle perspective pour DCS EASYWARE",
+      description: "Cette approche de développement assisté par IA représente une opportunité stratégique pour notre entreprise, permettant de proposer plus de valeur à nos clients tout en valorisant le potentiel technique de nos équipes support.",
+      buttonText: "Découvrir le potentiel",
       buttonLink: "#contact"
     }
   };

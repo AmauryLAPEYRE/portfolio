@@ -1,14 +1,8 @@
+// src/components/IaBadge.js
 import React from 'react';
 import { Cpu } from 'lucide-react';
 
-/**
- * Badge IA animé et harmonisé avec la palette de couleurs
- * @param {Object} props - Propriétés du composant
- * @param {string} props.size - Taille du badge ('sm', 'md', 'lg')
- * @param {string} props.text - Texte du badge (défaut: 'IA')
- * @param {boolean} props.pulse - Animation de pulsation (défaut: true)
- */
-const IaBadge = ({ size = 'sm', text = 'IA', pulse = true }) => {
+const IaBadge = ({ size = 'sm', text = 'Développé avec IA', pulse = true }) => {
   // Déterminer les classes en fonction de la taille
   const sizeClasses = {
     sm: 'text-xs px-1.5 py-0.5',
@@ -25,14 +19,21 @@ const IaBadge = ({ size = 'sm', text = 'IA', pulse = true }) => {
   const bgColorClass = 'bg-accent'; // Utilise var(--accent) défini dans notre CSS
   
   return (
-    <span className={`${baseClasses} ${sizeClasses[size]} ${bgColorClass} ${animationClass}`}
-          style={{ 
-            animation: pulse ? 'pulse-accent 2s infinite' : 'none',
-            backgroundColor: '#3182CE' // Bleu électrique
-          }}>
-      <Cpu size={iconSize} />
-      {text}
-    </span>
+    <div className="relative inline-block">
+      <span className={`${baseClasses} ${sizeClasses[size]} ${bgColorClass} ${animationClass}`}
+            style={{ 
+              animation: pulse ? 'pulse-accent 2s infinite' : 'none',
+              backgroundColor: '#3182CE' // Bleu électrique
+            }}>
+        <Cpu size={iconSize} />
+        {text}
+      </span>
+      {size !== 'sm' && (
+        <span className="absolute -bottom-6 left-0 right-0 text-xs text-center text-gray-500 dark:text-gray-400">
+          Technicien ⟶ Développeur
+        </span>
+      )}
+    </div>
   );
 };
 

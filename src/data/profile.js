@@ -1,15 +1,15 @@
 // src/data/profile.js
 export const profile = {
     name: "Amaury LAPEYRE",
-    title: "Technicien informatique | Développeur",
-    avatar: "", // URL de l'avatar ou initiales
+    title: "Technicien informatique | Développeur avec IA",
+    avatar: "", 
     contact: {
       email: "amaury_lapeyre@hotmail.fr",
       phone: "06 17 82 61 99",
       location: "Lyon, France",
       address: "108 Grande Rue, 69600 Oullins"
     },
-    summary: "Actuellement en poste chez un client final, je suis à la recherche de nouvelles opportunités. Passionné par l'informatique et le développement, je combine des compétences techniques en support IT, administration système et développement web pour créer des solutions efficaces.",
+    summary: "Technicien support chez DCS EASYWARE, j'ai développé plusieurs mini-applications et outils en utilisant l'intelligence artificielle comme co-pilote. Ce portfolio démontre comment l'IA permet à un technicien support de créer des solutions logicielles professionnelles sans expertise en développement, apportant ainsi de la valeur ajoutée aux clients et à l'entreprise.",
     links: {
       github: "https://github.com/AmauryLAPEYRE",
       portfolio: "https://amaurylapeyre.github.io/TimeTrack/"

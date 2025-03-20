@@ -158,6 +158,49 @@ const AIProjects = () => {
         )}
       </div>
 
+      {/* NOUVELLE SECTION: Avantages pour DCS EASYWARE */}
+      <div className="container mx-auto px-4 mb-16">
+        <div className="bg-white dark:bg-secondary-800 rounded-xl shadow-lg overflow-hidden">
+          <div className="p-8 md:p-12">
+            <h2 className="text-3xl font-bold text-secondary-800 dark:text-white mb-6">Avantages pour DCS EASYWARE</h2>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-gray-50 dark:bg-secondary-700/50 p-5 rounded-lg border-l-4 border-primary-500">
+                <h3 className="font-bold text-secondary-800 dark:text-white mb-3">Proposition de valeur enrichie</h3>
+                <p className="text-gray-600 dark:text-gray-300">Offrir à nos clients des solutions sur mesure développées rapidement par nos techniciens sur site.</p>
+              </div>
+              
+              <div className="bg-gray-50 dark:bg-secondary-700/50 p-5 rounded-lg border-l-4 border-secondary-500">
+                <h3 className="font-bold text-secondary-800 dark:text-white mb-3">Valorisation des compétences</h3>
+                <p className="text-gray-600 dark:text-gray-300">Permettre aux techniciens support de développer leurs compétences et d'apporter plus de valeur.</p>
+              </div>
+              
+              <div className="bg-gray-50 dark:bg-secondary-700/50 p-5 rounded-lg border-l-4 border-primary-500">
+                <h3 className="font-bold text-secondary-800 dark:text-white mb-3">Différenciation concurrentielle</h3>
+                <p className="text-gray-600 dark:text-gray-300">Se démarquer des autres ESN en intégrant l'IA comme levier d'innovation dans nos services de support.</p>
+              </div>
+              
+              <div className="bg-gray-50 dark:bg-secondary-700/50 p-5 rounded-lg border-l-4 border-secondary-500">
+                <h3 className="font-bold text-secondary-800 dark:text-white mb-3">Réduction des coûts</h3>
+                <p className="text-gray-600 dark:text-gray-300">Développer des solutions sans avoir à embaucher des développeurs spécialisés ou externaliser.</p>
+              </div>
+              
+              <div className="bg-gray-50 dark:bg-secondary-700/50 p-5 rounded-lg border-l-4 border-primary-500">
+                <h3 className="font-bold text-secondary-800 dark:text-white mb-3">Satisfaction client accrue</h3>
+                <p className="text-gray-600 dark:text-gray-300">Répondre plus rapidement et efficacement aux besoins spécifiques de nos clients.</p>
+              </div>
+              
+              <div className="bg-gray-50 dark:bg-secondary-700/50 p-5 rounded-lg border-l-4 border-secondary-500">
+                <h3 className="font-bold text-secondary-800 dark:text-white mb-3">Modèle reproductible</h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Ce portfolio est lui-même la preuve du concept : créé avec l'IA, il démontre comment les techniciens support peuvent développer des solutions complètes et professionnelles.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Outils IA */}
       <div className="container mx-auto px-4 mb-16">
         <div className="bg-gradient-to-r from-secondary-700 to-secondary-600 rounded-xl shadow-lg overflow-hidden">

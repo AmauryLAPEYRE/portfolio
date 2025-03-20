@@ -16,7 +16,7 @@ export const projects = [
         problem: "Difficulté à suivre et optimiser son temps quotidien",
         solution: "Interface intuitive permettant de visualiser et analyser l'utilisation du temps",
         aiAssisted: true,
-        aiContribution: "Optimisation du code et suggestions d'amélioration de l'UI"
+        aiContribution: "Cette application a été entièrement développée avec l'assistance de l'IA, qui a généré le code de base, suggéré des fonctionnalités et aidé à résoudre les bugs. Sans connaissance approfondie de JavaScript, j'ai pu créer une application complète et fonctionnelle."
       }
     },
     {
@@ -30,8 +30,8 @@ export const projects = [
       chartData: [65, 85, 70, 90],
       color: "bg-green-500",
       details: {
-        problem: "Gestion manuelle complexe des adresses IP des imprimantes",
-        solution: "Automatisation et centralisation de la gestion des adresses IP",
+        problem: "Gestion manuelle complexe des adresses IP des imprimantes chez un client",
+        solution: "Outil d'automatisation et centralisation de la gestion des adresses IP",
         aiAssisted: false,
         aiContribution: ""
       }
@@ -47,7 +47,7 @@ export const projects = [
       chartData: [85, 75, 80, 70],
       color: "bg-purple-500",
       details: {
-        problem: "Processus de gestion des utilisateurs inefficace et risques de sécurité",
+        problem: "Processus de gestion des utilisateurs inefficace et risques de sécurité chez un client",
         solution: "Mise en place de procédures standardisées et renforcement de la sécurité",
         aiAssisted: false,
         aiContribution: ""
@@ -67,7 +67,7 @@ export const projects = [
         problem: "Besoin de sites web professionnels et personnalisés pour les clients",
         solution: "Création de sites sur mesure avec WordPress",
         aiAssisted: true,
-        aiContribution: "Génération de contenus et aide au SEO"
+        aiContribution: "L'IA a permis de générer des sections entières de code CSS et PHP sans expertise approfondie, ainsi que d'optimiser le contenu SEO. Cette approche a considérablement accéléré le développement et amélioré la qualité finale."
       }
     },
     {
@@ -81,10 +81,10 @@ export const projects = [
       chartData: [60, 80, 75, 85],
       color: "bg-red-500",
       details: {
-        problem: "Performances faibles et erreurs dans les requêtes SQL",
+        problem: "Performances faibles et erreurs dans les requêtes SQL chez un client",
         solution: "Outil d'analyse et d'optimisation des requêtes",
         aiAssisted: true,
-        aiContribution: "Suggestions d'optimisation et détection des problèmes potentiels"
+        aiContribution: "En tant que technicien support sans expertise approfondie en SQL, l'IA m'a permis d'analyser et d'optimiser des requêtes complexes, identifiant des problèmes que je n'aurais pas pu détecter seul. L'outil créé a permis d'améliorer les performances de la base de données du client de manière significative."
       }
     },
     {
@@ -98,10 +98,10 @@ export const projects = [
       chartData: [75, 65, 85, 70],
       color: "bg-indigo-500",
       details: {
-        problem: "Besoins spécifiques nécessitant des applications sur mesure",
+        problem: "Besoins spécifiques d'un client nécessitant des applications sur mesure",
         solution: "Développement d'applications métier avec Symfony",
         aiAssisted: true,
-        aiContribution: "Génération de code boilerplate et assistance au débogage"
+        aiContribution: "Sans connaissance approfondie du framework Symfony, j'ai pu développer une application complète grâce à l'IA qui m'a guidé à chaque étape. Elle a généré la structure, les contrôleurs, et m'a aidé à comprendre les concepts clés. Ce qui aurait pris des mois d'apprentissage a été réalisé en quelques semaines."
       }
     },
     {
@@ -118,7 +118,7 @@ export const projects = [
         problem: "Tâches répétitives consommant du temps",
         solution: "Assistant IA pour automatiser les tâches routinières",
         aiAssisted: true,
-        aiContribution: "Co-création complète avec des modèles IA"
+        aiContribution: "Ce projet démontre le potentiel maximal de l'IA comme co-développeur. En connaissant seulement les bases de Python, j'ai développé un assistant qui automatise plusieurs tâches répétitives. L'IA a généré 90% du code, expliqué les concepts avancés et suggéré des améliorations que je n'aurais jamais pu concevoir seul."
       }
     }
   ];

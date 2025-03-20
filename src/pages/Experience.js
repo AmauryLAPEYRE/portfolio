@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContent } from '../context/ContentContext';
 import Navigation from '../components/Navigation';
-import { Briefcase, Cpu } from 'lucide-react';
+import { Briefcase, Cpu, Zap } from 'lucide-react';
 import IaBadge from '../components/IaBadge';
 
 const Experience = () => {
@@ -97,6 +97,66 @@ const Experience = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Section DCS EASYWARE & IA */}
+        <div className="mt-16 mb-8 max-w-4xl mx-auto">
+          <div className="bg-gradient-to-r from-secondary-800 to-secondary-700 rounded-xl shadow-card p-8 text-white">
+            <h2 className="text-2xl font-bold mb-6 flex items-center">
+              <Cpu className="mr-3 text-primary-500" size={24} />
+              Mon rôle de technicien support augmenté par l'IA
+            </h2>
+            
+            <p className="mb-6">
+              Chez DCS EASYWARE, j'ai intégré l'intelligence artificielle à mon rôle de technicien support, ce qui m'a permis de développer des solutions personnalisées pour nos clients sans avoir une expertise approfondie en développement.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white/10 p-5 rounded-lg backdrop-blur-sm">
+                <h3 className="font-bold text-primary-300 mb-3">Avant l'IA</h3>
+                <ul className="space-y-2">
+                  <li className="flex items-start">
+                    <span className="text-red-400 mr-2">✗</span>
+                    <span>Limité aux solutions existantes</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-red-400 mr-2">✗</span>
+                    <span>Problèmes spécifiques laissés sans solutions</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-red-400 mr-2">✗</span>
+                    <span>Dépendance aux équipes de développement</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-red-400 mr-2">✗</span>
+                    <span>Temps de résolution plus long</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="bg-white/10 p-5 rounded-lg backdrop-blur-sm">
+                <h3 className="font-bold text-primary-300 mb-3">Avec l'IA</h3>
+                <ul className="space-y-2">
+                  <li className="flex items-start">
+                    <span className="text-green-400 mr-2">✓</span>
+                    <span>Création de solutions sur mesure</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-400 mr-2">✓</span>
+                    <span>Résolution de problèmes spécifiques</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-400 mr-2">✓</span>
+                    <span>Autonomie dans le développement de solutions</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-400 mr-2">✓</span>
+                    <span>Réponse plus rapide aux besoins clients</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>

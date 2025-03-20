@@ -1,11 +1,12 @@
-// src/App.js
+// src/App.js - version modifiée pour inclure le Footer
 import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ContentProvider } from './context/ContentContext';
 import { ThemeProvider } from './context/ThemeContext';
 
-// Page d'accueil chargée immédiatement (sans lazy loading)
+// Composants chargés immédiatement
 import Home from './pages/Home';
+import Footer from './components/Footer';
 
 // Chargement paresseux des autres pages
 const Projects = lazy(() => import('./pages/Projects'));
@@ -67,22 +68,27 @@ const App = () => {
     <Router>
       <ThemeProvider>
         <ContentProvider>
-          <Suspense fallback={<LoadingFallback />}>
-            <Routes>
-              {/* Routes publiques */}
-              <Route path="/" element={<Home />} />
-              <Route path="/projets" element={<Projects />} />
-              <Route path="/projets/:id" element={<ProjectDetail />} />
-              <Route path="/experience" element={<Experience />} />
-              <Route path="/competences" element={<Skills />} />
-              <Route path="/formation" element={<Education />} />
-              <Route path="/interets" element={<Interests />} />
-              <Route path="/projets-ia" element={<AIProjects />} />
-              
-              {/* Redirection pour les routes inconnues */}
-              <Route path="*" element={<Navigate to="/" />} />
-            </Routes>
-          </Suspense>
+          <div className="flex flex-col min-h-screen">
+            <div className="flex-grow">
+              <Suspense fallback={<LoadingFallback />}>
+                <Routes>
+                  {/* Routes publiques */}
+                  <Route path="/" element={<Home />} />
+                  <Route path="/projets" element={<Projects />} />
+                  <Route path="/projets/:id" element={<ProjectDetail />} />
+                  <Route path="/experience" element={<Experience />} />
+                  <Route path="/competences" element={<Skills />} />
+                  <Route path="/formation" element={<Education />} />
+                  <Route path="/interets" element={<Interests />} />
+                  <Route path="/projets-ia" element={<AIProjects />} />
+                  
+                  {/* Redirection pour les routes inconnues */}
+                  <Route path="*" element={<Navigate to="/" />} />
+                </Routes>
+              </Suspense>
+            </div>
+            <Footer />
+          </div>
         </ContentProvider>
       </ThemeProvider>
     </Router>

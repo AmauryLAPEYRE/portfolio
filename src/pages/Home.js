@@ -1,3 +1,4 @@
+// src/pages/Home.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useContent } from '../context/ContentContext';
@@ -68,7 +69,7 @@ const Home = () => {
                 {profile.title}
               </p>
               <p className="text-gray-400 mb-8 animate-on-scroll" id="hero-desc">
-                {profile.summary}
+                Ce portfolio démontre comment, en tant que technicien support chez DCS EASYWARE, j'utilise l'intelligence artificielle pour développer des solutions logicielles sans expertise en programmation. Une approche qui pourrait être valorisée auprès de nos clients.
               </p>
               <div className="flex flex-wrap gap-4 animate-on-scroll" id="hero-buttons">
                 {profile.links && profile.links.github && (
@@ -167,6 +168,36 @@ const Home = () => {
             </div>
             <p className="text-3xl font-bold text-secondary-800 dark:text-white">Licence</p>
             <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">Développeur Full Stack</p>
+          </div>
+        </div>
+        
+        {/* Meta Portfolio Section - Comment ce portfolio a été créé */}
+        <div className="bg-white dark:bg-secondary-800 rounded-xl shadow-md p-6 my-8">
+          <div className="flex items-start gap-4">
+            <div className="bg-primary-100 dark:bg-primary-900/20 p-3 rounded-full">
+              <Cpu size={24} className="text-primary-500" />
+            </div>
+            <div className="flex-1">
+              <h2 className="text-2xl font-bold text-secondary-800 dark:text-white mb-3">
+                Ce portfolio est aussi un projet IA
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                En parfaite cohérence avec sa mission, ce portfolio est lui-même un exemple de développement assisté par IA. 
+                Toute sa structure, son design et son code ont été créés grâce à une collaboration entre un technicien support 
+                et des modèles d'IA comme Claude et ChatGPT.
+              </p>
+              
+              <div className="bg-secondary-50 dark:bg-secondary-700/30 p-4 rounded-lg border-l-4 border-primary-500">
+                <h3 className="font-bold text-secondary-700 dark:text-gray-200 mb-2">Processus de création</h3>
+                <ul className="space-y-2 text-gray-600 dark:text-gray-300 list-disc pl-5">
+                  <li>Architecture et conception guidées par l'IA</li>
+                  <li>Génération des composants React et de la structure de l'application</li>
+                  <li>Design responsive avec Tailwind CSS suggéré par l'IA</li>
+                  <li>Debugging et optimisation assistés</li>
+                  <li>Contenu et textes co-rédigés avec l'IA</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -331,18 +362,18 @@ const Home = () => {
             <div className="bg-secondary-600 bg-opacity-50 p-3 rounded-full">
               <Cpu size={28} className="text-primary-500" />
             </div>
-            <h2 className="text-2xl font-bold">Projets assistés par IA</h2>
+            <h2 className="text-2xl font-bold">L'IA comme co-développeur</h2>
           </div>
           
           <p className="text-gray-200 mb-6">
-            Découvrez comment j'utilise l'intelligence artificielle pour développer des solutions innovantes sans être un expert en développement.
+            Découvrez comment un technicien support peut développer des applications professionnelles avec l'assistance de l'IA, ouvrant de nouvelles perspectives stratégiques pour DCS EASYWARE.
           </p>
           
           <Link 
             to="/projets-ia"
             className="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-full inline-flex items-center gap-2 font-medium transition-colors"
           >
-            Explorer mes projets IA
+            Explorer cette approche innovante
             <ExternalLink size={16} />
           </Link>
         </div>

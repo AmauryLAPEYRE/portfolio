@@ -146,6 +146,72 @@ const ProjectDetail = () => {
               </div>
             )}
             
+            {/* Section sur le processus de développement avec l'IA (uniquement pour les projets IA) */}
+            {project.details && project.details.aiAssisted && (
+              <div className="bg-secondary-50 dark:bg-secondary-700/30 p-6 rounded-lg mb-8 border border-dashed border-primary-500">
+                <h3 className="font-bold text-xl text-secondary-800 dark:text-gray-100 mb-4 flex items-center">
+                  <Cpu size={20} className="text-primary-500 mr-2" />
+                  Comment ce projet a été réalisé avec l'IA
+                </h3>
+                
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <div className="bg-primary-100 dark:bg-primary-900/30 rounded-full p-1 mr-3 mt-1">
+                      <span className="flex items-center justify-center h-6 w-6 text-primary-700 dark:text-primary-300 font-bold">1</span>
+                    </div>
+                    <div>
+                      <p className="font-medium text-secondary-700 dark:text-gray-200">Identification du besoin</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">J'ai identifié un problème ou un besoin lors de mes missions de support.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-primary-100 dark:bg-primary-900/30 rounded-full p-1 mr-3 mt-1">
+                      <span className="flex items-center justify-center h-6 w-6 text-primary-700 dark:text-primary-300 font-bold">2</span>
+                    </div>
+                    <div>
+                      <p className="font-medium text-secondary-700 dark:text-gray-200">Conception avec l'IA</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">J'ai expliqué le besoin à l'IA qui m'a aidé à concevoir la structure de la solution.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-primary-100 dark:bg-primary-900/30 rounded-full p-1 mr-3 mt-1">
+                      <span className="flex items-center justify-center h-6 w-6 text-primary-700 dark:text-primary-300 font-bold">3</span>
+                    </div>
+                    <div>
+                      <p className="font-medium text-secondary-700 dark:text-gray-200">Génération de code</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">L'IA a généré le code de base que j'ai adapté à mes besoins spécifiques.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-primary-100 dark:bg-primary-900/30 rounded-full p-1 mr-3 mt-1">
+                      <span className="flex items-center justify-center h-6 w-6 text-primary-700 dark:text-primary-300 font-bold">4</span>
+                    </div>
+                    <div>
+                      <p className="font-medium text-secondary-700 dark:text-gray-200">Tests et améliorations</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">J'ai testé la solution et, avec l'aide de l'IA, corrigé les bugs et amélioré l'expérience utilisateur.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-primary-100 dark:bg-primary-900/30 rounded-full p-1 mr-3 mt-1">
+                      <span className="flex items-center justify-center h-6 w-6 text-primary-700 dark:text-primary-300 font-bold">5</span>
+                    </div>
+                    <div>
+                      <p className="font-medium text-secondary-700 dark:text-gray-200">Déploiement</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">J'ai déployé la solution, permettant de résoudre efficacement le problème initial.</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-4 pt-4 border-t border-gray-200 dark:border-secondary-600">
+                  <p className="text-primary-600 dark:text-primary-400 font-medium">Ce projet démontre comment DCS EASYWARE pourrait tirer parti de l'IA pour permettre à ses techniciens support de développer des solutions sur mesure.</p>
+                </div>
+              </div>
+            )}
+            
             {/* Graphique/Métriques */}
             {project.chartData && project.chartData.length > 0 && (
               <div className="mb-8">

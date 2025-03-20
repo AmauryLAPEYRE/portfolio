@@ -5,15 +5,19 @@ import { useAuth } from '../context/AuthContext';
 import { useContent } from '../context/ContentContext';
 import { LogOut, User, Briefcase, Code, BookOpen, Award, Heart, Cpu, Settings } from 'lucide-react';
 
-// Éditeurs pour chaque section
+// Éditeurs pour chaque section - Seulement importer ceux qui existent
 import ProfileEditor from './editors/ProfileEditor';
 import ProjectsEditor from './editors/ProjectsEditor';
-import ExperiencesEditor from './editors/ExperiencesEditor';
-import SkillsEditor from './editors/SkillsEditor';
-import EducationEditor from './editors/EducationEditor';
-import InterestsEditor from './editors/InterestsEditor';
-import AiSectionEditor from './editors/AiSectionEditor';
+// Nous n'importons plus ExperiencesEditor, SkillsEditor, etc.
+// car ils ont été supprimés
 import SettingsEditor from './editors/SettingsEditor';
+
+// Éditeur générique pour les sections qui n'ont pas d'éditeur spécifique
+import GenericExperiencesEditor from '../components/admin/GenericExperiencesEditor';
+import GenericSkillsEditor from '../components/admin/GenericSkillsEditor';
+import GenericEducationEditor from '../components/admin/GenericEducationEditor';
+import GenericInterestsEditor from '../components/admin/GenericInterestsEditor';
+import GenericAiSectionEditor from '../components/admin/GenericAiSectionEditor';
 
 const AdminPanel = () => {
   const { currentUser, signOut } = useAuth();
@@ -56,6 +60,30 @@ const AdminPanel = () => {
     { id: 'aiSection', label: 'Section IA', icon: <Cpu size={18} /> },
     { id: 'settings', label: 'Paramètres', icon: <Settings size={18} /> },
   ];
+
+  // Fonction pour afficher l'éditeur correspondant à l'onglet actif
+  const renderEditor = () => {
+    switch (activeTab) {
+      case 'profile':
+        return <ProfileEditor />;
+      case 'projects':
+        return <ProjectsEditor />;
+      case 'experiences':
+        return <GenericExperiencesEditor />;
+      case 'skills':
+        return <GenericSkillsEditor />;
+      case 'education':
+        return <GenericEducationEditor />;
+      case 'interests':
+        return <GenericInterestsEditor />;
+      case 'aiSection':
+        return <GenericAiSectionEditor />;
+      case 'settings':
+        return <SettingsEditor />;
+      default:
+        return <div>Sélectionnez un onglet</div>;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -124,14 +152,7 @@ const AdminPanel = () => {
 
           {/* Contenu principal */}
           <main className="flex-1 bg-white rounded-lg shadow-md p-6">
-            {activeTab === 'profile' && <ProfileEditor />}
-            {activeTab === 'projects' && <ProjectsEditor />}
-            {activeTab === 'experiences' && <ExperiencesEditor />}
-            {activeTab === 'skills' && <SkillsEditor />}
-            {activeTab === 'education' && <EducationEditor />}
-            {activeTab === 'interests' && <InterestsEditor />}
-            {activeTab === 'aiSection' && <AiSectionEditor />}
-            {activeTab === 'settings' && <SettingsEditor />}
+            {renderEditor()}
           </main>
         </div>
       </div>

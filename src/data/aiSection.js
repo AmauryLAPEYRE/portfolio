@@ -1,7 +1,7 @@
 // src/data/aiSection.js
 export const aiSection = {
     title: "L'IA comme co-développeur",
-    description: "Ce portfolio démontre comment un technicien support peut utiliser l'intelligence artificielle pour créer des applications professionnelles sans expertise en développement. Cette approche ouvre de nouvelles perspectives pour DCS EASYWARE et ses clients.",
+    description: "Ce portfolio démontre comment l’IA démocratise la création d’applications professionnelles, même sans expertise en développement, et ouvre ainsi de nouvelles opportunités stratégiques.",
     benefits: [
       "Création d'applications utiles sans besoin d'une expertise approfondie en développement",
       "Résolution rapide de problèmes clients grâce à des outils sur mesure",
@@ -32,8 +32,8 @@ export const aiSection = {
       }
     ],
     showcase: {
-      title: "Ce qu'un technicien support peut accomplir avec l'IA",
-      description: "Ces projets démontrent comment un technicien support peut, avec l'assistance de l'IA, développer des solutions qui étaient auparavant uniquement accessibles aux développeurs confirmés :",
+      title: "Ce que l'on peut accomplir avec l'IA",
+      description: "Ces projets illustrent comment, grâce à l’assistance de l’IA, il est possible de concevoir des solutions autrefois réservées aux développeurs confirmés. De la simple idée au projet abouti, l’IA ouvre de nouvelles perspectives pour innover et gagner en efficacité :",
       examples: [
         "Applications web fonctionnelles créées en quelques jours au lieu de semaines",
         "Outils sur mesure répondant à des problématiques clients spécifiques",

@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <p className="text-sm text-gray-300">© 2025 Amaury LAPEYRE - DCS EASYWARE</p>
+            <p className="text-sm text-gray-300">© 2025 Amaury LAPEYRE</p>
           </div>
           
           <div className="flex items-center bg-primary-500/20 rounded-full px-4 py-2 border border-primary-500/30">

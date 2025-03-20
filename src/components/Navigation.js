@@ -81,7 +81,7 @@ const Navigation = () => {
               <span 
                 className="transition-colors"
                 style={{ color: '#fd9d3e' }}
-              > Demo AI</span>
+              > LAPEYRE</span>
             </h1>
             <p className="text-xs text-neutral-200 -mt-1">{profile.title}</p>
           </div>

@@ -69,7 +69,7 @@ const Home = () => {
                 {profile.title}
               </p>
               <p className="text-gray-400 mb-8 animate-on-scroll" id="hero-desc">
-                Ce portfolio démontre comment, en tant que technicien support chez DCS EASYWARE, j'utilise l'intelligence artificielle pour développer des solutions logicielles sans expertise en programmation. Une approche qui pourrait être valorisée auprès de nos clients.
+              Diplômé en développement Full Stack, j’ai choisi de m’orienter vers un poste de technicien N1/N2 au sein de DCS EASYWARE. J’utilise l’intelligence artificielle pour créer de petites solutions et projets personnels visant à automatiser les tâches répétitives dans différents services, par exemple lorsqu’il s’agit de manipuler des données dans Excel.. Mon objectif est de simplifier le travail au quotidien et d’améliorer la productivité des équipes.
               </p>
               <div className="flex flex-wrap gap-4 animate-on-scroll" id="hero-buttons">
                 {profile.links && profile.links.github && (
@@ -81,17 +81,6 @@ const Home = () => {
                   >
                     <Github size={18} />
                     GitHub
-                  </a>
-                )}
-                {profile.links && profile.links.portfolio && (
-                  <a 
-                    href={profile.links.portfolio} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-full inline-flex items-center gap-2 transition-colors"
-                  >
-                    <Clock size={18} />
-                    TimeTrack
                   </a>
                 )}
                 <Link
@@ -157,7 +146,7 @@ const Home = () => {
               <Award size={24} className="text-primary-500 mr-3" />
               <h3 className="font-bold text-lg dark:text-white">Support</h3>
             </div>
-            <p className="text-3xl font-bold text-secondary-800 dark:text-white">Expert</p>
+            <p className="text-3xl font-bold text-secondary-800 dark:text-white">Avancé</p>
             <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">Systèmes & Réseaux</p>
           </div>
           
@@ -183,7 +172,7 @@ const Home = () => {
               </h2>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 En parfaite cohérence avec sa mission, ce portfolio est lui-même un exemple de développement assisté par IA. 
-                Toute sa structure, son design et son code ont été créés grâce à une collaboration entre un technicien support 
+                Toute sa structure, son design et son code ont été créés grâce à une collaboration entre moi 
                 et des modèles d'IA comme Claude et ChatGPT.
               </p>
               
@@ -366,7 +355,7 @@ const Home = () => {
           </div>
           
           <p className="text-gray-200 mb-6">
-            Découvrez comment un technicien support peut développer des applications professionnelles avec l'assistance de l'IA, ouvrant de nouvelles perspectives stratégiques pour DCS EASYWARE.
+            Découvrez comment l’IA démocratise la création d’applications professionnelles, même sans expertise en développement, et ouvre ainsi de nouvelles opportunités stratégiques.
           </p>
           
           <Link 

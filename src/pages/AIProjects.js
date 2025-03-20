@@ -344,7 +344,7 @@ const AIProjects = () => {
           <div className="p-8 md:p-12 text-center">
             <h2 className="text-3xl font-bold text-white mb-4">Une nouvelle perspective professionnelle</h2>
             <p className="text-xl text-white text-opacity-90 mb-8 max-w-2xl mx-auto">
-              Cette approche de développement assisté par IA représente une opportunité d'évolution pour les techniciens support, permettant de proposer plus de valeur aux clients et de valoriser le potentiel technique des équipes.
+            Cette approche, accessible à tous, constitue une véritable valeur ajoutée pour toute personne souhaitant concrétiser un projet, que ce soit de manière autonome ou dans un cadre professionnel.
             </p>
             
             <a 

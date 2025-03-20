@@ -5,7 +5,7 @@ import { useContent } from '../context/ContentContext';
 import Navigation from '../components/Navigation';
 import { 
   ArrowLeft, Link as LinkIcon, Github, Cpu, Calendar, 
-  BarChart, ChevronRight, Globe, Clock
+  BarChart, ChevronRight, Globe, Clock, User, Briefcase
 } from 'lucide-react';
 
 const ProjectDetail = () => {
@@ -68,11 +68,24 @@ const ProjectDetail = () => {
           <div className="p-6 md:p-8">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
               <div className="flex items-center">
-                <div className="bg-primary-500 w-14 h-14 rounded-full flex items-center justify-center text-white mr-4 shadow-md">
+                <div className={`${project.type === 'professional' ? 'bg-blue-500' : 'bg-green-500'} w-14 h-14 rounded-full flex items-center justify-center text-white mr-4 shadow-md`}>
                   <span className="text-xl font-bold">{project.id}</span>
                 </div>
                 <div>
                   <h1 className="text-3xl font-bold text-secondary-800 dark:text-white">{project.title}</h1>
+                  <div className="flex items-center mt-2">
+                    {project.type === 'professional' ? (
+                      <div className="flex items-center px-3 py-1 bg-blue-100 dark:bg-blue-800/50 text-blue-800 dark:text-blue-200 rounded-lg text-sm">
+                        <Briefcase size={16} className="mr-2" />
+                        <span className="font-medium">Projet professionnel</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center px-3 py-1 bg-green-100 dark:bg-green-800/50 text-green-800 dark:text-green-200 rounded-lg text-sm">
+                        <User size={16} className="mr-2" />
+                        <span className="font-medium">Projet personnel</span>
+                      </div>
+                    )}
+                  </div>
                   <div className="flex flex-wrap gap-2 mt-2">
                     {project.categories && project.categories.map((category, index) => (
                       <span 
@@ -146,7 +159,7 @@ const ProjectDetail = () => {
               </div>
             )}
             
-            {/* Section sur le processus de développement avec l'IA (uniquement pour les projets IA) */}
+            {/* Section sur le processus de développement avec l'IA */}
             {project.details && project.details.aiAssisted && (
               <div className="bg-secondary-50 dark:bg-secondary-700/30 p-6 rounded-lg mb-8 border border-dashed border-primary-500">
                 <h3 className="font-bold text-xl text-secondary-800 dark:text-gray-100 mb-4 flex items-center">
@@ -161,7 +174,11 @@ const ProjectDetail = () => {
                     </div>
                     <div>
                       <p className="font-medium text-secondary-700 dark:text-gray-200">Identification du besoin</p>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm">J'ai identifié un problème ou un besoin lors de mes missions de support.</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        {project.type === 'professional' 
+                          ? "J'ai identifié un problème ou un besoin lors de mes missions d'assistance technique chez un client."
+                          : "J'ai identifié un besoin personnel que je souhaitais résoudre avec une application."}
+                      </p>
                     </div>
                   </div>
                   
@@ -201,13 +218,21 @@ const ProjectDetail = () => {
                     </div>
                     <div>
                       <p className="font-medium text-secondary-700 dark:text-gray-200">Déploiement</p>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm">J'ai déployé la solution, permettant de résoudre efficacement le problème initial.</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        {project.type === 'professional' 
+                          ? "J'ai déployé la solution auprès du client, permettant de résoudre efficacement le problème initial."
+                          : "J'ai déployé l'application pour mon usage personnel, résolvant efficacement mon besoin initial."}
+                      </p>
                     </div>
                   </div>
                 </div>
                 
                 <div className="mt-4 pt-4 border-t border-gray-200 dark:border-secondary-600">
-                  <p className="text-primary-600 dark:text-primary-400 font-medium">Ce projet démontre comment DCS EASYWARE pourrait tirer parti de l'IA pour permettre à ses techniciens support de développer des solutions sur mesure.</p>
+                  <p className="text-primary-600 dark:text-primary-400 font-medium">
+                    {project.type === 'professional' 
+                      ? "Ce projet démontre comment un technicien support peut utiliser l'IA pour développer des solutions sur mesure répondant aux besoins spécifiques des clients."
+                      : "Ce projet personnel démontre comment l'IA permet de développer des applications sophistiquées sans expertise approfondie en programmation."}
+                  </p>
                 </div>
               </div>
             )}
@@ -221,7 +246,7 @@ const ProjectDetail = () => {
                     {project.chartData.map((value, index) => (
                       <div key={index} className="flex flex-col items-center">
                         <div 
-                          className="bg-primary-500 w-12 rounded-t-lg transition-all duration-700" 
+                          className={`${project.type === 'professional' ? 'bg-blue-500' : 'bg-green-500'} w-12 rounded-t-lg transition-all duration-700`}
                           style={{ height: `${value}%` }}
                         ></div>
                         <span className="text-xs mt-2 text-gray-500 dark:text-gray-400">Métrique {index + 1}</span>
@@ -239,7 +264,7 @@ const ProjectDetail = () => {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg transition-colors"
+                  className={`inline-flex items-center space-x-2 ${project.type === 'professional' ? 'bg-blue-600 hover:bg-blue-700' : 'bg-green-600 hover:bg-green-700'} text-white px-4 py-2 rounded-lg transition-colors`}
                 >
                   <Globe size={18} />
                   <span>Voir le projet</span>
@@ -270,12 +295,12 @@ const ProjectDetail = () => {
                 <Link 
                   to={`/projets/${relProj.id}`} 
                   key={relProj.id}
-                  className="bg-white dark:bg-secondary-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 border-l-4 border-primary-500"
+                  className={`bg-white dark:bg-secondary-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 border-l-4 ${relProj.type === 'professional' ? 'border-blue-500' : 'border-green-500'}`}
                 >
                   <div className="p-5">
                     <div className="flex justify-between items-start mb-3">
                       <h3 className="text-lg font-bold text-secondary-800 dark:text-gray-200">{relProj.title}</h3>
-                      <div className="bg-primary-500 w-8 h-8 rounded-full flex items-center justify-center text-white text-sm">
+                      <div className={`${relProj.type === 'professional' ? 'bg-blue-500' : 'bg-green-500'} w-8 h-8 rounded-full flex items-center justify-center text-white text-sm`}>
                         {relProj.id}
                       </div>
                     </div>

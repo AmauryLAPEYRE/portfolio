@@ -3,7 +3,7 @@ import React from 'react';
 import { useContent } from '../context/ContentContext';
 import { 
   Cpu, ExternalLink, ChevronRight, Code, Layout, Search, 
-  Repeat, Github, Zap, Lightbulb, Clock, Sparkles
+  Repeat, Github, Zap, Lightbulb, Clock, Sparkles, User, Briefcase
 } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import IaBadge from '../components/IaBadge';
@@ -11,10 +11,13 @@ import IaBadge from '../components/IaBadge';
 const AIProjects = () => {
   const { projects, aiSection, loading } = useContent();
 
-  // Filtrer les projets assistés par IA
+  // Filtrer les projets assistés par IA et les séparer par type
   const aiProjects = projects.filter(project => 
     project.details && project.details.aiAssisted
   );
+
+  const professionalProjects = aiProjects.filter(project => project.type === 'professional');
+  const personalProjects = aiProjects.filter(project => project.type === 'personal');
 
   // Fonction pour obtenir l'icône appropriée
   const getToolIcon = (iconName, size = 24) => {
@@ -87,87 +90,173 @@ const AIProjects = () => {
 
       {/* Projets assistés par IA */}
       <div className="container mx-auto px-4 mb-16">
-        <h2 className="text-3xl font-bold text-secondary-800 dark:text-white mb-8">Mes projets assistés par IA</h2>
+        <h2 className="text-3xl font-bold text-secondary-800 dark:text-white mb-8">Projets assistés par IA</h2>
         
-        {aiProjects.length === 0 ? (
-          <div className="bg-white dark:bg-secondary-800 rounded-xl shadow-lg p-8 text-center">
-            <Cpu size={48} className="text-gray-400 mx-auto mb-4" />
-            <p className="text-xl text-gray-500">Aucun projet assisté par IA n'a encore été ajouté.</p>
+        {/* Projets professionnels */}
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="bg-blue-100 dark:bg-blue-900/20 p-3 rounded-full">
+              <Briefcase size={24} className="text-blue-600 dark:text-blue-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-secondary-800 dark:text-white">Projets professionnels</h3>
           </div>
-        ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {aiProjects.map(project => (
-              <div 
-                key={project.id} 
-                className="bg-white dark:bg-secondary-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow border-l-4 border-primary-500"
-              >
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-bold text-secondary-800 dark:text-white">{project.title}</h3>
-                    <div className="bg-primary-500 w-10 h-10 rounded-full flex items-center justify-center text-white font-medium">
-                      <Cpu size={18} />
+          
+          {professionalProjects.length === 0 ? (
+            <div className="bg-white dark:bg-secondary-800 rounded-xl shadow-lg p-8 text-center">
+              <p className="text-xl text-gray-500">Aucun projet professionnel assisté par IA n'a encore été ajouté.</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 gap-6">
+              {professionalProjects.map(project => (
+                <div 
+                  key={project.id} 
+                  className="bg-white dark:bg-secondary-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow border-l-4 border-blue-500"
+                >
+                  <div className="p-6">
+                    <div className="flex justify-between items-start mb-4">
+                      <h3 className="text-xl font-bold text-secondary-800 dark:text-white">{project.title}</h3>
+                      <div className="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center text-white font-medium">
+                        <Cpu size={18} />
+                      </div>
                     </div>
-                  </div>
-                  
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
-                  
-                  {project.technologies && project.technologies.length > 0 && (
-                    <div className="flex flex-wrap gap-1 mb-4">
-                      {project.technologies.map((tech, index) => (
-                        <span key={index} className="inline-block bg-gray-100 dark:bg-secondary-700 text-xs px-2 py-1 rounded-full text-gray-600 dark:text-gray-300">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                  
-                  <div className="bg-secondary-50 dark:bg-secondary-700/50 p-4 rounded-lg mb-4 border-l-4 border-secondary-500">
-                    <h4 className="font-semibold text-secondary-800 dark:text-gray-200 mb-2">Contribution de l'IA</h4>
-                    <p className="text-secondary-700 dark:text-gray-300 text-sm">{project.details.aiContribution}</p>
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-2 mt-6">
-                    {project.link && (
-                      <a 
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm bg-primary-500 hover:bg-primary-600 text-white px-3 py-2 rounded-md transition-colors"
-                      >
-                        <ExternalLink size={14} className="mr-1" />
-                        Voir le projet
-                      </a>
+                    
+                    <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
+                    
+                    {project.technologies && project.technologies.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mb-4">
+                        {project.technologies.map((tech, index) => (
+                          <span key={index} className="inline-block bg-gray-100 dark:bg-secondary-700 text-xs px-2 py-1 rounded-full text-gray-600 dark:text-gray-300">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     )}
                     
-                    {project.github && (
-                      <a 
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm bg-secondary-700 hover:bg-secondary-800 text-white px-3 py-2 rounded-md transition-colors"
-                      >
-                        <Github size={14} className="mr-1" />
-                        Code source
-                      </a>
-                    )}
+                    <div className="bg-secondary-50 dark:bg-secondary-700/50 p-4 rounded-lg mb-4 border-l-4 border-blue-500">
+                      <h4 className="font-semibold text-secondary-800 dark:text-gray-200 mb-2">Contribution de l'IA</h4>
+                      <p className="text-secondary-700 dark:text-gray-300 text-sm">{project.details.aiContribution}</p>
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-2 mt-6">
+                      {project.link && (
+                        <a 
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-sm bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-md transition-colors"
+                        >
+                          <ExternalLink size={14} className="mr-1" />
+                          Voir le projet
+                        </a>
+                      )}
+                      
+                      {project.github && (
+                        <a 
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-sm bg-secondary-700 hover:bg-secondary-800 text-white px-3 py-2 rounded-md transition-colors"
+                        >
+                          <Github size={14} className="mr-1" />
+                          Code source
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          )}
+        </div>
+        
+        {/* Projets personnels */}
+        <div>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="bg-green-100 dark:bg-green-900/20 p-3 rounded-full">
+              <User size={24} className="text-green-600 dark:text-green-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-secondary-800 dark:text-white">Projets personnels</h3>
           </div>
-        )}
+          
+          {personalProjects.length === 0 ? (
+            <div className="bg-white dark:bg-secondary-800 rounded-xl shadow-lg p-8 text-center">
+              <p className="text-xl text-gray-500">Aucun projet personnel assisté par IA n'a encore été ajouté.</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 gap-6">
+              {personalProjects.map(project => (
+                <div 
+                  key={project.id} 
+                  className="bg-white dark:bg-secondary-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow border-l-4 border-green-500"
+                >
+                  <div className="p-6">
+                    <div className="flex justify-between items-start mb-4">
+                      <h3 className="text-xl font-bold text-secondary-800 dark:text-white">{project.title}</h3>
+                      <div className="bg-green-500 w-10 h-10 rounded-full flex items-center justify-center text-white font-medium">
+                        <Cpu size={18} />
+                      </div>
+                    </div>
+                    
+                    <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
+                    
+                    {project.technologies && project.technologies.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mb-4">
+                        {project.technologies.map((tech, index) => (
+                          <span key={index} className="inline-block bg-gray-100 dark:bg-secondary-700 text-xs px-2 py-1 rounded-full text-gray-600 dark:text-gray-300">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    
+                    <div className="bg-secondary-50 dark:bg-secondary-700/50 p-4 rounded-lg mb-4 border-l-4 border-green-500">
+                      <h4 className="font-semibold text-secondary-800 dark:text-gray-200 mb-2">Contribution de l'IA</h4>
+                      <p className="text-secondary-700 dark:text-gray-300 text-sm">{project.details.aiContribution}</p>
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-2 mt-6">
+                      {project.link && (
+                        <a 
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-sm bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-md transition-colors"
+                        >
+                          <ExternalLink size={14} className="mr-1" />
+                          Voir le projet
+                        </a>
+                      )}
+                      
+                      {project.github && (
+                        <a 
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-sm bg-secondary-700 hover:bg-secondary-800 text-white px-3 py-2 rounded-md transition-colors"
+                        >
+                          <Github size={14} className="mr-1" />
+                          Code source
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* NOUVELLE SECTION: Avantages pour DCS EASYWARE */}
+      {/* Avantages pour les entreprises */}
       <div className="container mx-auto px-4 mb-16">
         <div className="bg-white dark:bg-secondary-800 rounded-xl shadow-lg overflow-hidden">
           <div className="p-8 md:p-12">
-            <h2 className="text-3xl font-bold text-secondary-800 dark:text-white mb-6">Avantages pour DCS EASYWARE</h2>
+            <h2 className="text-3xl font-bold text-secondary-800 dark:text-white mb-6">Avantages pour les entreprises</h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="bg-gray-50 dark:bg-secondary-700/50 p-5 rounded-lg border-l-4 border-primary-500">
                 <h3 className="font-bold text-secondary-800 dark:text-white mb-3">Proposition de valeur enrichie</h3>
-                <p className="text-gray-600 dark:text-gray-300">Offrir à nos clients des solutions sur mesure développées rapidement par nos techniciens sur site.</p>
+                <p className="text-gray-600 dark:text-gray-300">Offrir aux clients des solutions sur mesure développées rapidement par les techniciens sur site.</p>
               </div>
               
               <div className="bg-gray-50 dark:bg-secondary-700/50 p-5 rounded-lg border-l-4 border-secondary-500">
@@ -177,7 +266,7 @@ const AIProjects = () => {
               
               <div className="bg-gray-50 dark:bg-secondary-700/50 p-5 rounded-lg border-l-4 border-primary-500">
                 <h3 className="font-bold text-secondary-800 dark:text-white mb-3">Différenciation concurrentielle</h3>
-                <p className="text-gray-600 dark:text-gray-300">Se démarquer des autres ESN en intégrant l'IA comme levier d'innovation dans nos services de support.</p>
+                <p className="text-gray-600 dark:text-gray-300">Se démarquer des autres ESN en intégrant l'IA comme levier d'innovation dans les services de support.</p>
               </div>
               
               <div className="bg-gray-50 dark:bg-secondary-700/50 p-5 rounded-lg border-l-4 border-secondary-500">
@@ -187,7 +276,7 @@ const AIProjects = () => {
               
               <div className="bg-gray-50 dark:bg-secondary-700/50 p-5 rounded-lg border-l-4 border-primary-500">
                 <h3 className="font-bold text-secondary-800 dark:text-white mb-3">Satisfaction client accrue</h3>
-                <p className="text-gray-600 dark:text-gray-300">Répondre plus rapidement et efficacement aux besoins spécifiques de nos clients.</p>
+                <p className="text-gray-600 dark:text-gray-300">Répondre plus rapidement et efficacement aux besoins spécifiques des clients.</p>
               </div>
               
               <div className="bg-gray-50 dark:bg-secondary-700/50 p-5 rounded-lg border-l-4 border-secondary-500">
@@ -253,16 +342,16 @@ const AIProjects = () => {
       <div className="container mx-auto px-4">
         <div className="bg-gradient-to-r from-primary-500 to-primary-600 rounded-xl shadow-lg overflow-hidden">
           <div className="p-8 md:p-12 text-center">
-            <h2 className="text-3xl font-bold text-white mb-4">{aiSection.callToAction.title}</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">Une nouvelle perspective professionnelle</h2>
             <p className="text-xl text-white text-opacity-90 mb-8 max-w-2xl mx-auto">
-              {aiSection.callToAction.description}
+              Cette approche de développement assisté par IA représente une opportunité d'évolution pour les techniciens support, permettant de proposer plus de valeur aux clients et de valoriser le potentiel technique des équipes.
             </p>
             
             <a 
-              href={aiSection.callToAction.buttonLink}
+              href="#contact"
               className="inline-flex items-center bg-white text-primary-600 font-bold px-6 py-3 rounded-full hover:bg-gray-50 transition-colors"
             >
-              {aiSection.callToAction.buttonText}
+              Découvrir le potentiel
               <ChevronRight size={18} className="ml-1" />
             </a>
           </div>

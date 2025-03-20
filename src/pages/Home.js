@@ -205,18 +205,18 @@ const Home = () => {
         {projects && projects.length > 0 && (
           <div className="bg-white dark:bg-secondary-800 rounded-xl shadow-md p-6 my-8 animate-on-scroll" id="featured-projects">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold text-secondary-800 dark:text-white">Projets à la une</h2>
+              <h2 className="text-2xl font-bold text-secondary-800 dark:text-white">Mes projets</h2>
               <Link 
                 to="/projets"
                 className="text-primary-500 hover:text-primary-600 flex items-center gap-1 transition-colors"
               >
-                Voir tous les projets
+                Voir tous les détails
                 <ExternalLink size={16} />
               </Link>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {projects.slice(0, 3).map(project => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {projects.map(project => (
                 <Link 
                   key={project.id} 
                   to={`/projets/${project.id}`}

@@ -23,21 +23,21 @@ export const projects = [
   {
     id: 2,
     title: "Centurion",
-    description: "Application de gestion de budget et suivi financier personnel avec visualisation de données",
+    description: "Application de simulation d’investissement avec DCA (Dollar Cost Averaging). L’utilisateur peut choisir n’importe quelle action (par exemple Nvidia), définir une somme mensuelle (comme 100 €) et indiquer une période (depuis l’année 2000, par exemple) pour visualiser l’évolution de son investissement. Centurion fournit également des indications sur les avantages et les aspects émotionnels liés à la pratique du DCA, afin de sensibiliser l’investisseur à la discipline et à la régularité d’un tel plan d’investissement",
     type: "personal", // Projet personnel
     categories: ['web', 'dev', 'ai'],
     technologies: ["React", "Tailwind CSS", "Chart.js"],
     image: "/api/placeholder/380/220",
-    metrics: "Gestion financière personnelle",
+    metrics: "Simulateur DCA",
     link: "https://centurion-two.vercel.app/",
     github: "https://github.com/AmauryLAPEYRE/centurion",
     chartData: [85, 80, 90, 75],
     color: "bg-green-500",
     details: {
-      problem: "Difficulté à suivre et gérer ses finances personnelles efficacement",
-      solution: "Interface intuitive avec tableaux de bord pour visualiser et gérer son budget personnel",
+      problem: "De nombreux particuliers peinent à se projeter dans une stratégie d’investissement à long terme et subissent les fluctuations émotionnelles liées aux variations du marché. Comment rendre concrète la puissance du DCA sur le long terme ?",
+      solution: "Un simulateur qui, en quelques clics, calcule comment aurait évolué un investissement progressif (ex. 100 € chaque mois) sur une action donnée depuis une date précise. L’application met en évidence les atouts du DCA, notamment pour lisser les risques et réduire l’impact des biais émotionnels",
       aiAssisted: true,
-      aiContribution: "Ce projet personnel a été développé avec l'assistance de plusieurs modèles d'IA. L'architecture de l'application, les composants React et les visualisations de données ont été générés avec l'aide de l'IA, me permettant de créer une application de gestion financière sophistiquée sans expertise préalable en React."
+      aiContribution: "Ce projet a été développé avec le soutien de plusieurs modèles d’IA. L’architecture, la génération de composants React et les visualisations de données ont été guidées par les suggestions de l’IA, permettant de créer un simulateur d’investissement performant sans expertise préalable poussée en développement web."
     }
   },
   {

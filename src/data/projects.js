@@ -23,7 +23,7 @@ export const projects = [
   {
     id: 2,
     title: "Centurion",
-    description: "Application de simulation d’investissement avec DCA (Dollar Cost Averaging). L’utilisateur peut choisir n’importe quelle action (par exemple Nvidia), définir une somme mensuelle (comme 100 €) et indiquer une période (depuis l’année 2000, par exemple) pour visualiser l’évolution de son investissement. Centurion fournit également des indications sur les avantages et les aspects émotionnels liés à la pratique du DCA, afin de sensibiliser l’investisseur à la discipline et à la régularité d’un tel plan d’investissement",
+    description: "Application de simulation d'investissement avec DCA (Dollar Cost Averaging). L'utilisateur peut choisir n'importe quelle action (par exemple Nvidia), définir une somme mensuelle (comme 100 €) et indiquer une période (depuis l'année 2000, par exemple) pour visualiser l'évolution de son investissement. Centurion fournit également des indications sur les avantages et les aspects émotionnels liés à la pratique du DCA, afin de sensibiliser l'investisseur à la discipline et à la régularité d'un tel plan d'investissement",
     type: "personal", // Projet personnel
     categories: ['web', 'dev', 'ai'],
     technologies: ["React", "Tailwind CSS", "Chart.js"],
@@ -34,10 +34,10 @@ export const projects = [
     chartData: [85, 80, 90, 75],
     color: "bg-green-500",
     details: {
-      problem: "De nombreux particuliers peinent à se projeter dans une stratégie d’investissement à long terme et subissent les fluctuations émotionnelles liées aux variations du marché. Comment rendre concrète la puissance du DCA sur le long terme ?",
-      solution: "Un simulateur qui, en quelques clics, calcule comment aurait évolué un investissement progressif (ex. 100 € chaque mois) sur une action donnée depuis une date précise. L’application met en évidence les atouts du DCA, notamment pour lisser les risques et réduire l’impact des biais émotionnels",
+      problem: "De nombreux particuliers peinent à se projeter dans une stratégie d'investissement à long terme et subissent les fluctuations émotionnelles liées aux variations du marché. Comment rendre concrète la puissance du DCA sur le long terme ?",
+      solution: "Un simulateur qui, en quelques clics, calcule comment aurait évolué un investissement progressif (ex. 100 € chaque mois) sur une action donnée depuis une date précise. L'application met en évidence les atouts du DCA, notamment pour lisser les risques et réduire l'impact des biais émotionnels",
       aiAssisted: true,
-      aiContribution: "Ce projet a été développé avec le soutien de plusieurs modèles d’IA. L’architecture, la génération de composants React et les visualisations de données ont été guidées par les suggestions de l’IA, permettant de créer un simulateur d’investissement performant sans expertise préalable poussée en développement web."
+      aiContribution: "Ce projet a été développé avec le soutien de plusieurs modèles d'IA. L'architecture, la génération de composants React et les visualisations de données ont été guidées par les suggestions de l'IA, permettant de créer un simulateur d'investissement performant sans expertise préalable poussée en développement web."
     }
   },
   {
@@ -58,6 +58,26 @@ export const projects = [
       solution: "Application web interactive pour visualiser et gérer les congés de l'équipe de façon intuitive et claire, avec un design moderne et des codes couleur pour améliorer la lisibilité",
       aiAssisted: true,
       aiContribution: "Cette application a été développée dans le cadre de mon travail avec l'assistance de l'IA. J'ai pu rapidement créer une interface React intuitive et un système de gestion des congés plus efficace que la solution Excel précédente, en optimisant la visualisation des données et l'expérience utilisateur pour l'ensemble de l'équipe informatique."
+    }
+  },
+  {
+    id: 4,
+    title: "Abona",
+    description: "Plateforme de partage d'abonnements avec tarification proratisée flexible permettant aux utilisateurs d'accéder à des services premium (Netflix, Spotify, Disney+, etc.) pour la durée exacte souhaitée, de quelques jours à plusieurs mois",
+    type: "personal", // Projet personnel
+    categories: ['web', 'dev', 'ai'],
+    technologies: ["React", "Firebase", "Tailwind CSS", "Stripe", "Cloud Functions"],
+    image: "/api/placeholder/380/220",
+    metrics: "Plateforme SaaS complète",
+    link: "https://abona-8d0c8.web.app/",
+    github: "https://github.com/AmauryLAPEYRE/abona",
+    chartData: [95, 90, 85, 92],
+    color: "bg-green-500",
+    details: {
+      problem: "Les abonnements aux services premium (streaming, musique, productivité) sont coûteux pour une personne seule, mais le partage d'abonnements traditionnel manque de flexibilité, obligeant souvent à s'engager pour des périodes fixes d'un mois ou plus",
+      solution: "Une plateforme permettant aux utilisateurs de choisir exactement la durée d'abonnement souhaitée avec une tarification proratisée intelligente. Le système calcule automatiquement le prix en fonction de la durée choisie et fournit un accès instantané après paiement",
+      aiAssisted: true,
+      aiContribution: "Ce projet complexe a été développé avec l'assistance de l'IA pour plusieurs aspects critiques: l'architecture Firebase, l'intégration de Stripe pour les paiements, la mise en place des Cloud Functions, et l'implémentation de l'algorithme de tarification proratisée. L'IA a permis de créer rapidement une plateforme SaaS complète incluant gestion des utilisateurs, paiements sécurisés et tableau de bord administrateur."
     }
   }
 ];

@@ -8,7 +8,6 @@ import { ThemeProvider } from './context/ThemeContext';
 import './styles/tailwind.css';
 import './index.css';
 import './styles/animations.css';
-// Si vous avez créé le fichier style.css professionnel
 import './styles/style.css';
 
 // Composant pour gérer les erreurs globales de l'application

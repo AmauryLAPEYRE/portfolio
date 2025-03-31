@@ -1,92 +1,137 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useContent } from '../context/ContentContext';
 import Navigation from '../components/Navigation';
-import { Cpu } from 'lucide-react';
+import { 
+  Cpu, CheckCircle, Award, Briefcase, Zap, Monitor, 
+  Database, Server, Code, Terminal, Globe, 
+  User, MessageSquare, Clock, Settings, FileSpreadsheet
+} from 'lucide-react';
 
-// Nouveau composant pour afficher une compétence
-const SkillItem = ({ name, level, color = '#fd9d3e', categoryColor = '#2C3E50', animated = true }) => {
-  const [animate, setAnimate] = useState(false);
-  
-  useEffect(() => {
-    if (animated) {
-      const timer = setTimeout(() => {
-        setAnimate(true);
-      }, 100);
-      return () => clearTimeout(timer);
-    } else {
-      setAnimate(true);
-    }
-  }, [animated]);
-
-  // Déterminer les badges de niveau
-  const getSkillLevel = (level) => {
-    if (level >= 90) return { text: 'Expert', bg: 'bg-success' };
-    if (level >= 80) return { text: 'Avancé', bg: 'bg-info' };
-    if (level >= 65) return { text: 'Intermédiaire', bg: 'bg-primary-500' };
-    return { text: 'Débutant', bg: 'bg-secondary-500' };
-  };
-
-  const skillLevel = getSkillLevel(level);
-
-  return (
-    <div className="bg-white dark:bg-secondary-800 rounded-lg shadow-card hover:shadow-card-hover transition-all duration-300 p-4 border-l-4" 
-         style={{ borderLeftColor: categoryColor }}>
-      <div className="flex justify-between items-center mb-2">
-        <h3 className="text-lg font-semibold dark:text-white">{name}</h3>
-        <span className={`${skillLevel.bg} text-white text-xs px-2 py-1 rounded-full`}>
-          {skillLevel.text}
-        </span>
-      </div>
-      
-      <div className="relative h-2 bg-gray-200 dark:bg-secondary-700 rounded-full overflow-hidden">
-        <div 
-          className="absolute top-0 left-0 h-full rounded-full transition-all duration-1000 ease-out"
-          style={{ 
-            width: animate ? `${level}%` : '0%',
-            backgroundColor: color
-          }}
-        ></div>
-      </div>
-      
-      {/* Sous-section avec les expériences ou projets associés */}
-      <div className="mt-4 pt-2 border-t border-gray-100 dark:border-secondary-700">
-        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-          <div className="font-medium">Niveau {level}/100</div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Composant principal pour la page des compétences
 const Skills = () => {
   const { skills, profile, loading } = useContent();
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [animateItems, setAnimateItems] = useState(false);
 
-  useEffect(() => {
-    // Démarrer l'animation après un court délai
-    const timer = setTimeout(() => {
-      setAnimateItems(true);
-    }, 200);
+  // Mappings d'icônes pour différentes compétences
+  const getSkillIcon = (skillName) => {
+    const name = skillName.toLowerCase();
+    if (name.includes('office') || name.includes('windows')) 
+      return <Monitor size={20} className="text-primary-500" />;
+    if (name.includes('active directory') || name.includes('sccm')) 
+      return <Server size={20} className="text-primary-500" />;
+    if (name.includes('sql') || name.includes('base de données')) 
+      return <Database size={20} className="text-primary-500" />;
+    if (name.includes('html') || name.includes('css') || name.includes('javascr')) 
+      return <Code size={20} className="text-primary-500" />;
+    if (name.includes('linux') || name.includes('bash')) 
+      return <Terminal size={20} className="text-primary-500" />;
+    if (name.includes('travail') || name.includes('communic')) 
+      return <MessageSquare size={20} className="text-primary-500" />;
+    if (name.includes('organisation')) 
+      return <Clock size={20} className="text-primary-500" />;
+    if (name.includes('français') || name.includes('anglais') || name.includes('espagnol')) 
+      return <Globe size={20} className="text-primary-500" />;
     
-    return () => clearTimeout(timer);
-  }, []);
+    // Icône par défaut
+    return <Settings size={20} className="text-primary-500" />;
+  };
 
-  // Déterminer la couleur pour chaque catégorie
-  const getCategoryColor = (category) => {
-    switch(category.toLowerCase()) {
-      case 'outils': return '#3182CE'; // Bleu
-      case 'développement': return '#fd9d3e'; // Orange
-      case 'systèmes': return '#38A169'; // Vert
-      case 'langues': return '#805AD5'; // Violet
-      case 'soft skills': return '#DD6B20'; // Orange foncé
-      default: return '#2C3E50'; // Bleu foncé
+  // Obtenir le badge correspondant au niveau
+  const getSkillLevelBadge = (level) => {
+    if (level >= 90) {
+      return (
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300">
+          <CheckCircle size={12} className="mr-1" />
+          Expert
+        </span>
+      );
+    } else if (level >= 80) {
+      return (
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+          <CheckCircle size={12} className="mr-1" />
+          Avancé
+        </span>
+      );
+    } else if (level >= 65) {
+      return (
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+          <CheckCircle size={12} className="mr-1" />
+          Intermédiaire
+        </span>
+      );
+    } else {
+      return (
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300">
+          <CheckCircle size={12} className="mr-1" />
+          Débutant
+        </span>
+      );
     }
   };
+
+  // Exemples concrets pour chaque compétence
+  const getSkillExamples = (skillName) => {
+    const name = skillName.toLowerCase();
+    
+    // Retourne un ou deux exemples concrets pour chaque compétence
+    if (name.includes('office 365')) 
+      return ["Administration de la suite complète", "Gestion des licences et des utilisateurs"];
+    if (name.includes('active directory')) 
+      return ["Création/gestion des comptes et groupes", "Politiques de sécurité et permissions"];
+    if (name.includes('sccm')) 
+      return ["Déploiement d'images système", "Distribution de logiciels à distance"];
+    if (name.includes('glpi') || name.includes('jira'))
+      return ["Suivi des tickets", "Gestion des inventaires"];
+    if (name.includes('html') || name.includes('css')) 
+      return ["Création d'interfaces responsive", "Adaptation de templates"];
+    if (name.includes('javascript')) 
+      return ["Développement de fonctionnalités front-end", "Manipulation du DOM"];
+    if (name.includes('sql')) 
+      return ["Requêtes complexes", "Optimisation de bases de données"];
+    if (name.includes('bash')) 
+      return ["Automatisation de tâches système", "Scripts de maintenance"];
+    if (name.includes('php')) 
+      return ["Développement d'applications web", "Intégration avec Symfony"];
+    if (name.includes('windows')) 
+      return ["Administration complète", "Résolution de problèmes avancés"];
+    if (name.includes('linux')) 
+      return ["Configuration de serveurs", "Gestion des services"];
+    if (name.includes('français')) 
+      return ["Communication professionnelle", "Documentation technique"];
+    if (name.includes('anglais')) 
+      return ["Documentation technique", "Support utilisateur"];
+    if (name.includes('espagnol')) 
+      return ["Compréhension de base", "Conversations simples"];
+    if (name.includes('travail en équipe')) 
+      return ["Projets collaboratifs", "Partage de connaissances"];
+    if (name.includes('communication')) 
+      return ["Explication de concepts techniques", "Formations utilisateurs"];
+    if (name.includes('organisation')) 
+      return ["Gestion de plusieurs projets", "Priorisation des tâches"];
+    
+    // Exemple par défaut
+    return ["Application dans divers contextes"];
+  };
+
+  // Obtenir des projets associés (exemples fictifs basés sur les compétences)
+  const getRelatedProjects = (skillName) => {
+    const name = skillName.toLowerCase();
+    
+    if (name.includes('office') || name.includes('active directory')) 
+      return ["Suite d'Outils d'Automatisation IT"];
+    if (name.includes('html') || name.includes('css') || name.includes('javascr')) 
+      return ["TimeTrack", "Centurion"];
+    if (name.includes('sql') || name.includes('base')) 
+      return ["Calendrier de Congés"];
+    if (name.includes('bash') || name.includes('linux')) 
+      return ["Suite d'Outils d'Automatisation IT"];
+    
+    return [];
+  };
+
+  // Filtrage des compétences par catégorie
+  const filteredSkills = selectedCategory === 'all' 
+    ? skills 
+    : skills.filter(group => group.category.toLowerCase() === selectedCategory.toLowerCase());
 
   if (loading) {
     return (
@@ -95,11 +140,6 @@ const Skills = () => {
       </div>
     );
   }
-
-  // Filtre des compétences par catégorie
-  const filteredSkills = selectedCategory === 'all' 
-    ? skills 
-    : skills.filter(group => group.category.toLowerCase() === selectedCategory.toLowerCase());
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-secondary-900">
@@ -110,7 +150,7 @@ const Skills = () => {
           <header className="mb-12 text-center">
             <h1 className="text-3xl md:text-4xl font-bold text-secondary-800 dark:text-white mb-4">Compétences professionnelles</h1>
             <p className="text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
-              Un aperçu de mes compétences techniques et personnelles, développées à travers mes expériences professionnelles et mes projets personnels.
+              Une vue d'ensemble de mes compétences techniques et personnelles avec des exemples concrets de leur application.
             </p>
           </header>
           
@@ -128,29 +168,41 @@ const Skills = () => {
                 En tant que technicien support, j'ai développé un ensemble unique de compétences combinant mon expertise en support avec les capacités de l'IA pour créer des solutions techniques sans être développeur expert.
               </p>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-                  <h3 className="font-bold mb-2 text-white">Prompt Engineering</h3>
-                  <div className="w-full bg-white/20 h-2 rounded-full mb-1">
-                    <div className="bg-white h-2 rounded-full" style={{ width: '90%' }}></div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="bg-white/10 backdrop-blur-sm p-5 rounded-lg">
+                  <h3 className="font-bold mb-3 text-white flex items-center gap-2">
+                    <Award size={16} />
+                    Prompt Engineering
+                  </h3>
+                  <p className="text-sm mb-2">Formulation précise de requêtes pour l'IA</p>
+                  <div className="text-xs text-white/80 mt-1">
+                    <span className="block mb-1">→ Structuration des requêtes complexes</span>
+                    <span className="block">→ Optimisation pour des résultats ciblés</span>
                   </div>
-                  <p className="text-sm">Formuler des requêtes précises pour l'IA</p>
                 </div>
                 
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-                  <h3 className="font-bold mb-2 text-white">Intégration Code IA</h3>
-                  <div className="w-full bg-white/20 h-2 rounded-full mb-1">
-                    <div className="bg-white h-2 rounded-full" style={{ width: '85%' }}></div>
+                <div className="bg-white/10 backdrop-blur-sm p-5 rounded-lg">
+                  <h3 className="font-bold mb-3 text-white flex items-center gap-2">
+                    <Code size={16} />
+                    Intégration Code IA
+                  </h3>
+                  <p className="text-sm mb-2">Adaptation du code généré par l'IA</p>
+                  <div className="text-xs text-white/80 mt-1">
+                    <span className="block mb-1">→ Fusion de modules générés par IA</span>
+                    <span className="block">→ Personnalisation pour besoins spécifiques</span>
                   </div>
-                  <p className="text-sm">Adapter et combiner le code généré par l'IA</p>
                 </div>
                 
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-                  <h3 className="font-bold mb-2 text-white">Debugging avec IA</h3>
-                  <div className="w-full bg-white/20 h-2 rounded-full mb-1">
-                    <div className="bg-white h-2 rounded-full" style={{ width: '80%' }}></div>
+                <div className="bg-white/10 backdrop-blur-sm p-5 rounded-lg">
+                  <h3 className="font-bold mb-3 text-white flex items-center gap-2">
+                    <Zap size={16} />
+                    Debugging avec IA
+                  </h3>
+                  <p className="text-sm mb-2">Résolution de problèmes assistée</p>
+                  <div className="text-xs text-white/80 mt-1">
+                    <span className="block mb-1">→ Diagnostic avancé des erreurs</span>
+                    <span className="block">→ Optimisation des performances</span>
                   </div>
-                  <p className="text-sm">Résoudre les problèmes avec l'aide de l'IA</p>
                 </div>
               </div>
             </div>
@@ -174,27 +226,27 @@ const Skills = () => {
                 onClick={() => setSelectedCategory(group.category.toLowerCase())}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   selectedCategory === group.category.toLowerCase() 
-                    ? 'text-white shadow-md' 
+                    ? 'bg-primary-500 text-white shadow-md' 
                     : 'bg-white dark:bg-secondary-800 text-neutral-700 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-secondary-700'
                 }`}
-                style={{ backgroundColor: selectedCategory === group.category.toLowerCase() ? getCategoryColor(group.category) : '' }}
               >
                 {group.category}
               </button>
             ))}
           </div>
           
-          {/* Affichage des compétences par groupe */}
+          {/* Affichage des compétences par groupe - NOUVELLE APPROCHE */}
           <div className="space-y-12">
             {filteredSkills.map((group, groupIndex) => (
               <div key={group.id || groupIndex} className="bg-white dark:bg-secondary-800 rounded-xl shadow-md overflow-hidden">
-                <div className="p-5 border-b border-gray-100 dark:border-secondary-700 flex items-center" 
-                     style={{ backgroundColor: `${getCategoryColor(group.category)}15` }}>
-                  <div className="w-8 h-8 rounded-full mr-3 flex items-center justify-center" 
-                       style={{ backgroundColor: getCategoryColor(group.category) }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
-                    </svg>
+                <div className="p-5 border-b border-gray-100 dark:border-secondary-700 flex items-center">
+                  <div className="w-10 h-10 rounded-full mr-3 flex items-center justify-center bg-primary-500">
+                    {group.category === 'Outils' ? <Settings size={20} className="text-white" /> :
+                     group.category === 'Développement' ? <Code size={20} className="text-white" /> :
+                     group.category === 'Systèmes' ? <Server size={20} className="text-white" /> :
+                     group.category === 'Langues' ? <Globe size={20} className="text-white" /> :
+                     group.category === 'Soft Skills' ? <User size={20} className="text-white" /> :
+                     <Briefcase size={20} className="text-white" />}
                   </div>
                   <h2 className="text-xl font-bold text-secondary-800 dark:text-white">{group.category}</h2>
                 </div>
@@ -202,14 +254,55 @@ const Skills = () => {
                 <div className="p-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {group.items.map((skill, skillIndex) => (
-                      <SkillItem 
+                      <div
                         key={skillIndex}
-                        name={skill.name}
-                        level={skill.level}
-                        color={profile?.colors?.primary || getCategoryColor(group.category)}
-                        categoryColor={getCategoryColor(group.category)}
-                        animated={animateItems}
-                      />
+                        className="bg-gray-50 dark:bg-secondary-700 rounded-lg p-5 hover:shadow-md transition-all"
+                      >
+                        <div className="flex justify-between items-start mb-4">
+                          <div className="flex items-center">
+                            {getSkillIcon(skill.name)}
+                            <h3 className="ml-2 text-lg font-semibold text-secondary-800 dark:text-white">
+                              {skill.name}
+                            </h3>
+                          </div>
+                          {getSkillLevelBadge(skill.level)}
+                        </div>
+                        
+                        {/* Exemples concrets d'utilisation */}
+                        <div className="mb-4">
+                          <h4 className="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+                            Applications concrètes:
+                          </h4>
+                          <ul className="space-y-1">
+                            {getSkillExamples(skill.name).map((example, i) => (
+                              <li key={i} className="text-sm text-neutral-600 dark:text-neutral-400 flex items-start">
+                                <span className="text-primary-500 mr-2">•</span>
+                                {example}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        
+                        {/* Projets associés s'il y en a */}
+                        {getRelatedProjects(skill.name).length > 0 && (
+                          <div className="mt-3 pt-3 border-t border-gray-200 dark:border-secondary-600">
+                            <h4 className="text-xs font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+                              Utilisé dans les projets:
+                            </h4>
+                            <div className="flex flex-wrap gap-2">
+                              {getRelatedProjects(skill.name).map((project, i) => (
+                                <span 
+                                  key={i}
+                                  className="inline-flex items-center px-2 py-1 rounded-md text-xs bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300"
+                                >
+                                  <Briefcase size={10} className="mr-1" />
+                                  {project}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -223,22 +316,27 @@ const Skills = () => {
       <div className="bg-gradient-to-r from-secondary-700 to-secondary-800 py-16 text-white mt-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Apprentissage continu</h2>
+            <h2 className="text-3xl font-bold mb-4">Approche d'apprentissage continu</h2>
             <p className="text-neutral-200 mb-8">
-              Le monde de la technologie évolue rapidement. Je me tiens constamment à jour avec les dernières technologies et meilleures pratiques.
+              Le monde de la technologie évolue rapidement. Je me forme constamment avec une approche orientée résultats.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <div className="bg-white/10 rounded-lg p-5 backdrop-blur-sm w-full sm:w-64">
-                <div className="text-4xl font-bold text-primary-400 mb-2">5+</div>
-                <div className="text-neutral-200">Années d'expérience</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-white/10 rounded-lg p-5 backdrop-blur-sm flex flex-col items-center">
+                <FileSpreadsheet size={24} className="text-primary-400 mb-3" />
+                <h3 className="font-bold mb-2">Apprentissage ciblé</h3>
+                <p className="text-sm text-white/80 text-center">Acquisition de compétences basée sur les besoins concrets rencontrés sur le terrain</p>
               </div>
-              <div className="bg-white/10 rounded-lg p-5 backdrop-blur-sm w-full sm:w-64">
-                <div className="text-4xl font-bold text-primary-400 mb-2">10+</div>
-                <div className="text-neutral-200">Technologies maîtrisées</div>
+              
+              <div className="bg-white/10 rounded-lg p-5 backdrop-blur-sm flex flex-col items-center">
+                <Zap size={24} className="text-primary-400 mb-3" />
+                <h3 className="font-bold mb-2">Application pratique</h3>
+                <p className="text-sm text-white/80 text-center">Mise en œuvre immédiate des connaissances dans des projets réels</p>
               </div>
-              <div className="bg-white/10 rounded-lg p-5 backdrop-blur-sm w-full sm:w-64">
-                <div className="text-4xl font-bold text-primary-400 mb-2">7+</div>
-                <div className="text-neutral-200">Projets réalisés</div>
+              
+              <div className="bg-white/10 rounded-lg p-5 backdrop-blur-sm flex flex-col items-center">
+                <Cpu size={24} className="text-primary-400 mb-3" />
+                <h3 className="font-bold mb-2">Collaboration avec l'IA</h3>
+                <p className="text-sm text-white/80 text-center">Utilisation de l'IA comme partenaire d'apprentissage pour accélérer la montée en compétence</p>
               </div>
             </div>
           </div>

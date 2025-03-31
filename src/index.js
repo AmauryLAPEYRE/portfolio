@@ -104,37 +104,3 @@ const AppWithErrorHandling = () => {
 // Initialisation de l'application
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<AppWithErrorHandling />);
-
-// Ajouter un gestionnaire d'erreurs non capturées
-window.addEventListener('error', (event) => {
-  console.error('Erreur non capturée:', event.error);
-  
-  // Vous pouvez envoyer l'erreur à un service de suivi ou l'enregistrer pour le débogage
-  try {
-    localStorage.setItem('portfolioUncaughtError', JSON.stringify({
-      message: event.error?.message || 'Erreur inconnue',
-      filename: event.filename,
-      lineno: event.lineno,
-      colno: event.colno,
-      time: new Date().toISOString()
-    }));
-  } catch (e) {
-    console.warn('Erreur lors de la sauvegarde dans localStorage:', e);
-  }
-});
-
-// Ajouter un gestionnaire pour les rejets de promesses non gérés
-window.addEventListener('unhandledrejection', (event) => {
-  console.error('Promesse rejetée non gérée:', event.reason);
-  
-  // Vous pouvez envoyer l'erreur à un service de suivi ou l'enregistrer pour le débogage
-  try {
-    localStorage.setItem('portfolioUnhandledRejection', JSON.stringify({
-      message: event.reason?.message || 'Rejet non géré',
-      stack: event.reason?.stack,
-      time: new Date().toISOString()
-    }));
-  } catch (e) {
-    console.warn('Erreur lors de la sauvegarde dans localStorage:', e);
-  }
-});

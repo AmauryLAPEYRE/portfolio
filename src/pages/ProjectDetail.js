@@ -5,7 +5,9 @@ import { useContent } from '../context/ContentContext';
 import Navigation from '../components/Navigation';
 import { 
   ArrowLeft, Link as LinkIcon, Github, Cpu, Calendar, 
-  BarChart, ChevronRight, Globe, Clock, User, Briefcase
+  BarChart, ChevronRight, Globe, Clock, User, Briefcase,
+  Settings, Code, FileText, Terminal, Command, 
+  Zap, Check, X, ArrowUpDown, Award, Smile, Lightbulb, Target
 } from 'lucide-react';
 
 const ProjectDetail = () => {
@@ -237,21 +239,176 @@ const ProjectDetail = () => {
               </div>
             )}
             
-            {/* Graphique/Métriques */}
-            {project.chartData && project.chartData.length > 0 && (
-              <div className="mb-8">
-                <h2 className="text-xl font-bold text-secondary-800 dark:text-gray-200 mb-3">Métriques du projet</h2>
-                <div className="bg-gray-50 dark:bg-secondary-700 p-4 rounded-lg">
-                  <div className="flex justify-between items-end h-48">
-                    {project.chartData.map((value, index) => (
-                      <div key={index} className="flex flex-col items-center">
-                        <div 
-                          className={`${project.type === 'professional' ? 'bg-blue-500' : 'bg-green-500'} w-12 rounded-t-lg transition-all duration-700`}
-                          style={{ height: `${value}%` }}
-                        ></div>
-                        <span className="text-xs mt-2 text-gray-500 dark:text-gray-400">Métrique {index + 1}</span>
+            {/* Section des outils inclus (pour le projet d'automatisation) */}
+            {project.details && project.details.tools && (
+              <div className="bg-white dark:bg-secondary-800 rounded-xl shadow-md p-6 mb-8">
+                <h3 className="text-xl font-bold text-secondary-800 dark:text-white mb-4 flex items-center">
+                  <Settings size={20} className="text-primary-500 mr-2" />
+                  Outils inclus dans cette suite
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {project.details.tools.map((tool, index) => (
+                    <div 
+                      key={index} 
+                      className="bg-gray-50 dark:bg-secondary-700 p-5 rounded-lg border-l-4 border-primary-500 hover:shadow-md transition-all"
+                    >
+                      <div className="flex items-center mb-3">
+                        <div className="bg-primary-100 dark:bg-primary-900/30 p-2 rounded-full mr-3">
+                          {tool.tech.toLowerCase().includes('python') ? <Code size={18} className="text-blue-600 dark:text-blue-400" /> :
+                           tool.tech.toLowerCase().includes('vba') ? <FileText size={18} className="text-green-600 dark:text-green-400" /> :
+                           tool.tech.toLowerCase().includes('powershell') ? <Terminal size={18} className="text-purple-600 dark:text-purple-400" /> :
+                           <Command size={18} className="text-orange-600 dark:text-orange-400" />}
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-secondary-800 dark:text-white">{tool.name}</h4>
+                          <p className="text-xs text-neutral-500 dark:text-neutral-400">{tool.tech}</p>
+                        </div>
                       </div>
-                    ))}
+                      <p className="text-neutral-600 dark:text-neutral-300 text-sm">{tool.description}</p>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="mt-6 p-4 bg-gray-50 dark:bg-secondary-700/30 rounded-lg border-l-4 border-secondary-500">
+                  <p className="text-neutral-700 dark:text-neutral-300 text-sm">
+                    <span className="font-medium">Note:</span> Ces outils ont été développés spécifiquement pour l'environnement interne de DCS EASYWARE et ses clients. Pour des raisons de sécurité et de confidentialité, le code source n'est pas disponible publiquement.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Section bénéfices (remplace les métriques quantitatives) */}
+            {project.id === 5 && (
+              <div className="bg-white dark:bg-secondary-800 rounded-xl shadow-md p-6 mb-8">
+                <h3 className="text-xl font-bold text-secondary-800 dark:text-white mb-4 flex items-center">
+                  <Award size={20} className="text-primary-500 mr-2" />
+                  Bénéfices concrets
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="bg-gray-50 dark:bg-secondary-700 p-5 rounded-lg text-center">
+                    <div className="bg-primary-100 dark:bg-primary-900/30 p-3 rounded-full mx-auto w-16 h-16 flex items-center justify-center mb-3">
+                      <Smile size={28} className="text-primary-600 dark:text-primary-400" />
+                    </div>
+                    <h4 className="font-bold text-secondary-800 dark:text-white mb-2">Satisfaction Utilisateur</h4>
+                    <p className="text-neutral-600 dark:text-neutral-300 text-sm">Solutions rapides aux problèmes quotidiens irritants</p>
+                  </div>
+                  
+                  <div className="bg-gray-50 dark:bg-secondary-700 p-5 rounded-lg text-center">
+                    <div className="bg-primary-100 dark:bg-primary-900/30 p-3 rounded-full mx-auto w-16 h-16 flex items-center justify-center mb-3">
+                      <Lightbulb size={28} className="text-primary-600 dark:text-primary-400" />
+                    </div>
+                    <h4 className="font-bold text-secondary-800 dark:text-white mb-2">Culture d'Initiative</h4>
+                    <p className="text-neutral-600 dark:text-neutral-300 text-sm">Promotion de l'innovation à tous les niveaux de l'entreprise</p>
+                  </div>
+                  
+                  <div className="bg-gray-50 dark:bg-secondary-700 p-5 rounded-lg text-center">
+                    <div className="bg-primary-100 dark:bg-primary-900/30 p-3 rounded-full mx-auto w-16 h-16 flex items-center justify-center mb-3">
+                      <Target size={28} className="text-primary-600 dark:text-primary-400" />
+                    </div>
+                    <h4 className="font-bold text-secondary-800 dark:text-white mb-2">Solutions Ciblées</h4>
+                    <p className="text-neutral-600 dark:text-neutral-300 text-sm">Réponses précises aux besoins spécifiques des utilisateurs</p>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            {/* Section d'impact (spécifique au projet d'innovations) */}
+            {project.id === 5 && project.details && project.details.impact && (
+              <div className="bg-gray-50 dark:bg-secondary-800/80 rounded-xl shadow-md p-6 mb-8 border-l-4 border-secondary-500">
+                <h3 className="text-xl font-bold text-secondary-800 dark:text-white mb-4 flex items-center">
+                  <Zap size={20} className="text-secondary-500 mr-2" />
+                  Impact et valeur ajoutée
+                </h3>
+                
+                <div className="space-y-4">
+                  {project.details.impact.map((impact, index) => (
+                    <div 
+                      key={index} 
+                      className="flex items-start bg-white dark:bg-secondary-700 p-4 rounded-lg border-l-4 border-primary-500"
+                    >
+                      <div className="text-primary-500 font-bold mr-3 mt-0.5">
+                        {index + 1}.
+                      </div>
+                      <p className="text-neutral-700 dark:text-neutral-300">{impact}</p>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="mt-6 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                  <p className="text-secondary-700 dark:text-secondary-300 italic">
+                    "Ces initiatives illustrent parfaitement comment un technicien support peut apporter une valeur ajoutée significative en allant au-delà de son périmètre traditionnel, grâce à sa compréhension des besoins terrain et à l'utilisation de l'IA comme accélérateur d'innovation."
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Section de comparaison avant/après (spécifique au projet d'innovations) */}
+            {project.id === 5 && (
+              <div className="bg-gradient-to-r from-secondary-700 to-secondary-800 rounded-xl shadow-lg p-6 mb-8 text-white">
+                <h3 className="text-xl font-bold mb-6 flex items-center">
+                  <ArrowUpDown size={20} className="text-primary-400 mr-2" />
+                  Comparaison : Support traditionnel vs Support augmenté par l'IA
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-white/10 backdrop-blur-sm p-5 rounded-lg">
+                    <h4 className="font-bold text-primary-300 mb-4 flex items-center">
+                      <X size={16} className="text-red-400 mr-2" />
+                      Approche traditionnelle
+                    </h4>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <span className="text-red-400 mr-2">•</span>
+                        <span>Limité aux actions prédéfinies dans le cahier des charges</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-red-400 mr-2">•</span>
+                        <span>Attente de solutions développées par les équipes spécialisées</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-red-400 mr-2">•</span>
+                        <span>Problèmes "mineurs" laissés sans solution par manque de ressources</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-red-400 mr-2">•</span>
+                        <span>Pas d'opportunité d'évolution technique pour les techniciens support</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-red-400 mr-2">•</span>
+                        <span>Frustration des utilisateurs face aux problèmes répétitifs non résolus</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-white/10 backdrop-blur-sm p-5 rounded-lg">
+                    <h4 className="font-bold text-primary-300 mb-4 flex items-center">
+                      <Check size={16} className="text-green-400 mr-2" />
+                      Support augmenté par l'IA
+                    </h4>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <span className="text-green-400 mr-2">•</span>
+                        <span>Initiatives pour résoudre proactivement les problèmes rencontrés</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-400 mr-2">•</span>
+                        <span>Développement rapide de solutions adaptées aux besoins spécifiques</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-400 mr-2">•</span>
+                        <span>Automatisation des tâches répétitives pour tous les niveaux d'utilisateurs</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-400 mr-2">•</span>
+                        <span>Valorisation des compétences techniques des techniciens support</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-green-400 mr-2">•</span>
+                        <span>Satisfaction client accrue grâce à des solutions rapides aux irritants quotidiens</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
